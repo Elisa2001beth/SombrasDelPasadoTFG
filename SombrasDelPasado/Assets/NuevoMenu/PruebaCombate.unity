@@ -1221,7 +1221,7 @@ MonoBehaviour:
   healthBar: {fileID: 345910805}
   manaBar: {fileID: 902380115}
   jugoBar: {fileID: 1398273941}
-  damageText: {fileID: 0}
+  damageText: {fileID: 1632066991}
 --- !u!4 &445519106 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1fcb0e14e3db37347a3da56813cd6330, type: 3}
@@ -3674,18 +3674,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerActive: {fileID: 0}
+  players:
+  - {fileID: 987645682}
+  - {fileID: 2100722125}
   enemyTarget: {fileID: 0}
-  players: []
-  playersTurn: 0
-  enemiesTurn: 0
-  enemies: []
-  time: 0
-  playerHealthBars: []
-  playerManaBars: []
-  playerJugoBars: []
-  enemyHealthBars: []
-  enemyManaBars: []
-  enemyJugoBars: []
+  enemies:
+  - {fileID: 445519103}
+  _delayBtwnEnemies: 3
+  playersHealthBars:
+  - {fileID: 842490316}
+  - {fileID: 1248318600}
+  playerManaBars:
+  - {fileID: 1567608996}
+  - {fileID: 1943832751}
+  playerJugoBars:
+  - {fileID: 44468969}
+  - {fileID: 1852687488}
+  enemyHealthBars:
+  - {fileID: 345910805}
+  enemyManaBars:
+  - {fileID: 902380115}
+  enemyJugoBars:
+  - {fileID: 1398273941}
 --- !u!1001 &987645675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3804,7 +3814,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f658be9f20d62f4fa3df6778df8fd8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerEndTurn: 0
   markerSelect: {fileID: 155708869}
   action1: {fileID: 1952233523}
   action2: {fileID: 1536585779}
@@ -8669,7 +8678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f658be9f20d62f4fa3df6778df8fd8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerEndTurn: 0
   markerSelect: {fileID: 1262044451}
   action1: {fileID: 299997783}
   action2: {fileID: 1989098556}

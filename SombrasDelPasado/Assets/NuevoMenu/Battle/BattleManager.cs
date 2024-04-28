@@ -1,76 +1,146 @@
-
-//////////////////////////////////////////////////////////////////
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum BattleState
+{
+    PLAYER_TURN,
+    ENEMY_TURN,
+    END
+}
+
 public class BattleManager : MonoBehaviour
 {
-    public GameObject playerActive;
-    public GameObject enemyTarget;
-    public GameObject[] players;
-    //public bool playerEndTurn;
-    public bool playersTurn;
-    public bool enemiesTurn;
+    private BattleState _bState = BattleState.PLAYER_TURN;
 
-    public GameObject[] enemies;
-    //public bool enemyEndTurn;
+    public BattleState GetBattleState()
+    {
+        return _bState;
+    }
 
-    public int time;
+    public P_BattleController playerActive;
+    public P_BattleController[] players;
 
-    private float timeTrans;
+    public E_BattleController enemyTarget;    
+    public E_BattleController[] enemies;
+
+    [SerializeField]
+    private float _delayBtwnEnemies = 3f;
 
     //nuevo
-    public Image[] playerHealthBars;
+    public Image[] playersHealthBars;
     public Image[] playerManaBars;
     public Image[] playerJugoBars;
 
     public Image[] enemyHealthBars;
     public Image[] enemyManaBars;
     public Image[] enemyJugoBars;
-    //
 
-
-
-
-    private void Awake(){
-        players = GameObject.FindGameObjectsWithTag("Player");
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        //nuevo
-        playerHealthBars = new Image[players.Length];
-        playerManaBars = new Image[players.Length];
-        playerJugoBars = new Image[players.Length];
-
-        enemyHealthBars = new Image[enemies.Length];
-        enemyManaBars = new Image[enemies.Length];
-        enemyJugoBars = new Image[enemies.Length];
-        //
-    }
-
-
-    // Update is called once per frame
-    void Update()
+    public void CheckEnemyDeads()
     {
-        //PlayerEndTurn();
-        //EnemyAtk();
-        if (playersTurn)
-            PlayersTurn();
-        else if (enemiesTurn)
-            EnemiesTurn();
+        bool allEnemiesDead = true;
+
+        foreach (Image healthBar in enemyHealthBars)
+        {
+            if (healthBar.fillAmount > 0)
+            {
+                allEnemiesDead = false;
+                break;
+            }
+        }
+
+        if (allEnemiesDead) {
+            _bState = BattleState.END;
+            // EndGame()
+        }
+        else if (PlayersCanAttack()) {
+            _bState = BattleState.PLAYER_TURN;
+        }
+        else {
+            _bState = BattleState.ENEMY_TURN;
+            StartCoroutine(EnemiesAttack());
+        }
     }
 
+    private bool PlayersCanAttack()
+    {
+        bool atLeastOneCanAttack = false;
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (!players[i].playerEndTurn)
+            {
+                atLeastOneCanAttack = true;
+                break;
+            }
+        }
+
+        return atLeastOneCanAttack;
+    }
+
+    private IEnumerator EnemiesAttack()
+    {
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            yield return new WaitForSeconds(_delayBtwnEnemies);
+
+            if (enemyHealthBars[i].fillAmount <= 0)
+            {
+                break;
+            }
+
+            enemies[i].EnemyAtk();
+
+            if (CheckPlayersDeads()) {
+                _bState = BattleState.END;
+                // EndGame()
+                break;
+            }
+        }
+
+        NextTurn();
+    }
+
+    private bool CheckPlayersDeads()
+    {
+        bool allPlayersDead = true;
+
+        foreach (Image healthBar in playersHealthBars)
+        {
+            if (healthBar.fillAmount > 0)
+            {
+                allPlayersDead = false;
+                break;
+            }
+        }
+
+        return allPlayersDead;
+    }
+
+    public void NextTurn()
+    {
+        _bState = BattleState.PLAYER_TURN;
+
+        foreach (P_BattleController player in players)
+        {
+            player.ResetTurn();
+        }
+
+        foreach (E_BattleController enemy in enemies)
+        {
+            enemy.ResetTurn();
+        }
+    }
 
     //nuevo
-    public void EndCombat()
+    public void EndGame()
     {
         bool allPlayersDead = true;
         bool allEnemiesDead = true;
 
         // Comprobar las barras de vida de los jugadores
-        foreach (Image healthBar in playerHealthBars)
+        foreach (Image healthBar in playersHealthBars)
         {
             if (healthBar.fillAmount > 0)
             {
@@ -104,102 +174,21 @@ public class BattleManager : MonoBehaviour
     }
     //
 
-    /* public void PlayerEndTurn(){
-        int x = 0;
-        for(int i = 0; i < players.Length; i++){
-            if(players[i].GetComponent<P_BattleController>().PlayerEndTurn())
-            {
-                x++;
-            }
-        }
-        if(x== players.Length){
-            playerEndTurn = true;
-        }
-    } */
-
-    public void PlayersTurn()
-    {
-        int players_attacked = 0;
-        for (int i = 0; i < players.Length; i++)
-        {
-            if (players[i].GetComponent<P_BattleController>().PlayerEndTurn())
-            {
-                players_attacked++;
-            }
-        }
-        if (players_attacked == players.Length)
-        {
-            playersTurn = false;
-            enemiesTurn = true; // Cambiar al turno de los enemigos después de que los jugadores hayan terminado
-        }
-    }
-
-    public void NextTurn()
-    {
-        if (!playersTurn)
-        {
-            playersTurn = true;
-            enemiesTurn = false; // Cambiar al turno de los jugadores después de que los enemigos hayan terminado
-        }
-    }
-
-    public void EnemiesTurn()
-    {
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            if (enemies[i].GetComponent<E_BattleController>().enemyEndTurn == false)
-            {
-                enemies[i].GetComponent<E_BattleController>().EnemyAtk();
-                // No necesitas controlar el tiempo aquí, ya que cada enemigo ataca una vez por turno
-            }
-        }
-        NextTurn(); // Llamar a NextTurn() al final del turno de los enemigos
-    }
-
-
-    public void PlayerSelect(GameObject PlayerSelect){
+    public void PlayerSelect(P_BattleController PlayerSelect){
         playerActive = PlayerSelect;
     }
 
     public void PlayerDeSelect(){
-        playerActive.GetComponent<P_BattleController>().PlayerDeSelect();
+        playerActive.PlayerDeSelect();
         playerActive = null;
     }
 
-    public void EnemySelect(GameObject enemySelect){
+    public void EnemySelect(E_BattleController enemySelect) {
         enemyTarget = enemySelect;
     }
 
-    public void EnemyDeSelect(){
-        enemyTarget.GetComponent<E_BattleController>().EnemyDeSelect();
+    public void EnemyDeSelect() {
+        enemyTarget.EnemyDeSelect();
         enemyTarget = null;
-    }
-
-    /* public void EnemyAtk(){
-        if(playerEndTurn){
-            for(int i=0; i < enemies.Length; i++)
-            {
-                if(enemies[i].GetComponent<E_BattleController>().enemyEndTurn == false)
-                {
-                    timeTrans += Time.deltaTime;
-                    time = Mathf.RoundToInt(timeTrans);
-
-                    if(time == 3)
-                    {
-                        enemies[i].GetComponent<E_BattleController>().EnemyAtk();
-                        timeTrans = 0;
-                        time = 0;
-                    }
-                
-                    
-                }
-            }
-            
-        }
-    } */
-    
+    }    
 }
-/////////////////////////////////////////////////////////////////////
-
-
-

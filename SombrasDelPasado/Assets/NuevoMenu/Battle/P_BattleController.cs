@@ -12,7 +12,7 @@ public class P_BattleController : MonoBehaviour
 {
     private const string ATK = "Atk";
 
-    public bool playerEndTurn;
+    public bool playerEndTurn { get; private set; }
     public GameObject markerSelect;
     //nuevo
     public GameObject action1;
@@ -20,7 +20,7 @@ public class P_BattleController : MonoBehaviour
     public GameObject action3;
     public GameObject action4;
 
-    private BattleManager sbm;
+    private BattleManager _sbm;
 
     public Animator playerAnim;
 
@@ -39,28 +39,33 @@ public class P_BattleController : MonoBehaviour
     
     void Start()
     {
-        enemyHealthBar = sbm.enemyHealthBars;
+        enemyHealthBar = _sbm.enemyHealthBars;
         
     }
 
     private void Awake(){
-        sbm = FindObjectOfType<BattleManager>();
+        _sbm = FindObjectOfType<BattleManager>();
         playerAnim = GetComponent<Animator>();
     }
 
     private void OnMouseDown(){
 
-        if(playerEndTurn == false){
-            if(sbm.playerActive != gameObject && sbm.playerActive != null)
+        if (playerEndTurn)
+        {
+            return;
+        }
+
+        if(_sbm.GetBattleState() == BattleState.PLAYER_TURN) {
+            
+
+            if(_sbm.playerActive != gameObject && _sbm.playerActive != null)
             {
-                sbm.PlayerDeSelect();
+                _sbm.PlayerDeSelect();
             }
 
             PlayerSelect();
-            sbm.PlayerSelect(gameObject);
-        
+            _sbm.PlayerSelect(this);
         }
-        
     }
 
     private void PlayerSelect(){
@@ -76,7 +81,7 @@ public class P_BattleController : MonoBehaviour
         action3.SetActive(false);
         action4.SetActive(false);     
 
-        sbm.enemyTarget.GetComponent<E_BattleController>().EnemyDeSelect();
+        _sbm.enemyTarget.EnemyDeSelect();
     }
 
     //nuevo
@@ -124,6 +129,9 @@ public class P_BattleController : MonoBehaviour
         playerAnim.SetTrigger(animTrigger);
         playerEndTurn = true;
         EnemyDamage(damage);
+
+        _sbm.CheckEnemyDeads();
+        _sbm.PlayerDeSelect();
     }
 
     public bool PlayerEndTurn(){
@@ -140,7 +148,7 @@ public class P_BattleController : MonoBehaviour
     }
 
     public void EnemyDamage(int damage){
-        sbm.enemyTarget.GetComponent<E_BattleController>().enemyAnim.SetTrigger("Damage");
+        _sbm.enemyTarget.enemyAnim.SetTrigger("Damage");
     }
 
     //nuevo
@@ -175,10 +183,8 @@ public class P_BattleController : MonoBehaviour
         damageText.gameObject.SetActive(false);  // Oculta el texto después de desvanecerlo
     }
 
+    public void ResetTurn()
+    {
+        playerEndTurn = false;
+    }
 }
-
-/////////////////////////////////////////////////////////////////////
-
-
-
- 

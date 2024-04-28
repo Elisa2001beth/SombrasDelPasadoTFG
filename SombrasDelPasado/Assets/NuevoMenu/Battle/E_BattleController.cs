@@ -1,6 +1,3 @@
-
-//////////////////////////////////////////////////////////////////////////
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +11,7 @@ public class E_BattleController : MonoBehaviour
     public GameObject markerSelect;
     private BattleManager _sbm;
     public bool enemyEndTurn;
-    public GameObject playerTarget;
+    public P_BattleController playerTarget;
 
     public Animator enemyAnim;
 
@@ -36,7 +33,7 @@ public class E_BattleController : MonoBehaviour
     //nuevo
     void Start()
     {
-        playerHealthBar = _sbm.playerHealthBars;
+        playerHealthBar = _sbm.playersHealthBars;
     }
     //
 
@@ -56,15 +53,15 @@ public class E_BattleController : MonoBehaviour
         }
         
         EnemySelect();
-        _sbm.EnemySelect(gameObject);
+        _sbm.EnemySelect(this);
     }
 
     private void EnemySelect(){
         markerSelect.SetActive(true);
-        _sbm.playerActive.GetComponent<P_BattleController>().action1.SetActive(true);
-        _sbm.playerActive.GetComponent<P_BattleController>().action2.SetActive(true);
-        _sbm.playerActive.GetComponent<P_BattleController>().action3.SetActive(true);
-        _sbm.playerActive.GetComponent<P_BattleController>().action4.SetActive(true);
+        _sbm.playerActive.action1.SetActive(true);
+        _sbm.playerActive.action2.SetActive(true);
+        _sbm.playerActive.action3.SetActive(true);
+        _sbm.playerActive.action4.SetActive(true);
     }
 
     public void EnemyDeSelect(){
@@ -72,6 +69,9 @@ public class E_BattleController : MonoBehaviour
     }
 
     public void EnemyAtk(){
+        // TODO: Comprobar que el jugador seleccionado esté vivo.
+        // 1 Obtener un array con solo los vivos
+        // 2 Obtener random de ese nuevo array
         playerTarget = _sbm.players[Random.Range(0,_sbm.players.Length)];
         //enemyAnim.SetTrigger("Atk");
         //enemyEndTurn = true;
@@ -182,9 +182,9 @@ public class E_BattleController : MonoBehaviour
 
         damageText.gameObject.SetActive(false);  // Oculta el texto después de desvanecerlo
     }
+
+    public void ResetTurn()
+    {
+        enemyEndTurn = false;
+    }
 }
-
-///////////////////////////////////////////////////////////////////////
-
-
- 
