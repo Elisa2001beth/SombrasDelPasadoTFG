@@ -35,12 +35,12 @@ public class P_BattleController : MonoBehaviour
 
     public TMP_Text damageText;
 
-    int damage =0;
+    int damage = 0;
     
     void Start()
     {
         enemyHealthBar = sbm.enemyHealthBars;
-        Debug.Log(currentJugoValue);
+        
     }
     //
 
@@ -52,11 +52,11 @@ public class P_BattleController : MonoBehaviour
     
 
     // Update is called once per frame
-    void Update()
+    /* void Update()
     {
         PlayerEndTurn();
-        Debug.Log(currentJugoValue);
-    }
+        
+    } */
 
     private void OnMouseDown(){
 
@@ -119,6 +119,17 @@ public class P_BattleController : MonoBehaviour
         }   
     }
 
+    private void ActionCommonLogic(int minDamage, int maxDamage, string animTrigger)
+    {
+        // int damage = Random.Range(minDamage, maxDamage);
+        // UpdateBars();
+        // ShowDamageText(damage);
+        // playerAnim.SetTrigger(animTrigger);
+        // playerEndTurn = true;
+        // EnemyDamage(damage);
+    }
+
+
     public void ActionButton3(){
         //playerAnim.SetTrigger("Atk");
         //playerEndTurn = true;
@@ -156,6 +167,7 @@ public class P_BattleController : MonoBehaviour
 
 
 
+
     public bool PlayerEndTurn(){
         if(playerEndTurn){
             markerSelect.SetActive(false);
@@ -170,7 +182,6 @@ public class P_BattleController : MonoBehaviour
     }
 
     public void EnemyDamage(int damage){
-        Debug.Log("accion de daño enemigo");
         sbm.enemyTarget.GetComponent<E_BattleController>().enemyAnim.SetTrigger("Damage");
     }
 

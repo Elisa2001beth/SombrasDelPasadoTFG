@@ -17,6 +17,14 @@ public class DoorLockCode : MonoBehaviour
     private int[] enteredCode = new int[3]; // Código ingresado por el usuario
     private int currentIndex = 0; // Índice actual del código ingresado
 
+    //
+    public Color grayColor = Color.gray; // Color para los números ingresados
+
+
+
+    [SerializeField] Animator puerta_anim;
+    [SerializeField] GameObject panel;
+
     private void Start()
     {
         // Asignar funciones a los botones
@@ -38,7 +46,9 @@ public class DoorLockCode : MonoBehaviour
             currentIndex++;
             UpdateMessageText();
         }
-    }
+    } 
+
+
 
     private void UpdateMessageText()
     {
@@ -104,11 +114,35 @@ public class DoorLockCode : MonoBehaviour
 
     private void OpenDoor()
     {
+
         // Aquí puedes añadir la lógica para abrir la puerta.
         // Por ejemplo, desactivar la puerta cerrada y activar la puerta abierta.
         // doorClosedGameObject.SetActive(false);
         // doorOpenGameObject.SetActive(true);
+
+
+        //panel.SetActive(false);
+        Invoke("DesactivarPanel", 1f);
+        Invoke("AbrirPuerta", 2f);
+        Invoke("EliminarPanel",3f);
+
+        //puerta_anim.SetTrigger("Open");
+    }
+
+    public void DesactivarPanel(){
+        panel.SetActive(false);
+
+    }
+
+    public void AbrirPuerta(){
+        puerta_anim.SetTrigger("Open");
+    }
+
+    public void EliminarPanel(){
+        Destroy(panel);
     }
 }
+
+
 
 

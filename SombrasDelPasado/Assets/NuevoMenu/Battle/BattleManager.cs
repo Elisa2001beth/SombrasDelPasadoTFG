@@ -11,10 +11,12 @@ public class BattleManager : MonoBehaviour
     public GameObject playerActive;
     public GameObject enemyTarget;
     public GameObject[] players;
-    public bool playerEndTurn;
+    //public bool playerEndTurn;
+    public bool playersTurn;
+    public bool enemiesTurn;
 
     public GameObject[] enemies;
-    public bool enemyEndTurn;
+    //public bool enemyEndTurn;
 
     public int time;
 
@@ -52,8 +54,12 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerEndTurn();
-        EnemyAtk();
+        //PlayerEndTurn();
+        //EnemyAtk();
+        if (playersTurn)
+            PlayersTurn();
+        else if (enemiesTurn)
+            EnemiesTurn();
     }
 
 
@@ -98,7 +104,7 @@ public class BattleManager : MonoBehaviour
     }
     //
 
-    public void PlayerEndTurn(){
+    /* public void PlayerEndTurn(){
         int x = 0;
         for(int i = 0; i < players.Length; i++){
             if(players[i].GetComponent<P_BattleController>().PlayerEndTurn())
@@ -109,7 +115,47 @@ public class BattleManager : MonoBehaviour
         if(x== players.Length){
             playerEndTurn = true;
         }
+    } */
+
+    public void PlayersTurn()
+    {
+        int players_attacked = 0;
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i].GetComponent<P_BattleController>().PlayerEndTurn())
+            {
+                players_attacked++;
+            }
+        }
+        if (players_attacked == players.Length)
+        {
+            playersTurn = false;
+            enemiesTurn = true; // Cambiar al turno de los enemigos después de que los jugadores hayan terminado
+        }
     }
+
+    public void NextTurn()
+    {
+        if (!playersTurn)
+        {
+            playersTurn = true;
+            enemiesTurn = false; // Cambiar al turno de los jugadores después de que los enemigos hayan terminado
+        }
+    }
+
+    public void EnemiesTurn()
+    {
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            if (enemies[i].GetComponent<E_BattleController>().enemyEndTurn == false)
+            {
+                enemies[i].GetComponent<E_BattleController>().EnemyAtk();
+                // No necesitas controlar el tiempo aquí, ya que cada enemigo ataca una vez por turno
+            }
+        }
+        NextTurn(); // Llamar a NextTurn() al final del turno de los enemigos
+    }
+
 
     public void PlayerSelect(GameObject PlayerSelect){
         playerActive = PlayerSelect;
@@ -129,7 +175,7 @@ public class BattleManager : MonoBehaviour
         enemyTarget = null;
     }
 
-    public void EnemyAtk(){
+    /* public void EnemyAtk(){
         if(playerEndTurn){
             for(int i=0; i < enemies.Length; i++)
             {
@@ -150,7 +196,7 @@ public class BattleManager : MonoBehaviour
             }
             
         }
-    }
+    } */
     
 }
 /////////////////////////////////////////////////////////////////////

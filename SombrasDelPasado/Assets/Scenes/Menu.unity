@@ -4543,7 +4543,7 @@ GameObject:
   - component: {fileID: 1710576928}
   - component: {fileID: 1710576929}
   m_Layer: 0
-  m_Name: PRUEBA
+  m_Name: MenuManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
