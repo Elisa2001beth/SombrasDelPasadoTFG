@@ -10,6 +10,8 @@ using TMPro;
 
 public class P_BattleController : MonoBehaviour
 {
+    private const string ATK = "Atk";
+
     public bool playerEndTurn;
     public GameObject markerSelect;
     //nuevo
@@ -34,29 +36,17 @@ public class P_BattleController : MonoBehaviour
     private Image[] enemyHealthBar;
 
     public TMP_Text damageText;
-
-    int damage = 0;
     
     void Start()
     {
         enemyHealthBar = sbm.enemyHealthBars;
         
     }
-    //
-
 
     private void Awake(){
         sbm = FindObjectOfType<BattleManager>();
         playerAnim = GetComponent<Animator>();
     }
-    
-
-    // Update is called once per frame
-    /* void Update()
-    {
-        PlayerEndTurn();
-        
-    } */
 
     private void OnMouseDown(){
 
@@ -84,89 +74,57 @@ public class P_BattleController : MonoBehaviour
         action1.SetActive(false);
         action2.SetActive(false);
         action3.SetActive(false);
-        action4.SetActive(false);
-        
+        action4.SetActive(false);     
 
         sbm.enemyTarget.GetComponent<E_BattleController>().EnemyDeSelect();
     }
 
     //nuevo
 
-    public void ActionButton1(){
-        //playerAnim.SetTrigger("Atk");
-        //playerEndTurn = true;
-        //EnemyDamage();//esto no debe ir asi debe hacerse una accion en la animacion. minuto 9:36 video 08-Activacion animacion script/Batalla turnos unity
-        damage = Random.Range(5,10);
-        UpdateBars();
-        ShowDamageText(damage);
-        playerAnim.SetTrigger("Atk");
-        playerEndTurn = true;
-        EnemyDamage(damage);
+    public void ActionButton1() {
+        ActionCommonLogic(5, 10, ATK);
     }
 
-    public void ActionButton2(){
-        //playerAnim.SetTrigger("Atk");
-        //playerEndTurn = true;
-        //EnemyDamage();//esto no debe ir asi debe hacerse una accion en la animacion. minuto 9:36 video 08-Activacion animacion script/Batalla turnos unity
-        if (currentManaValue >= 20){
-            damage = Random.Range(15,30);
+    public void ActionButton2() {
+        if (currentManaValue >= 20) {
             currentManaValue -= 20;
-            UpdateBars();
-            ShowDamageText(damage);
-            playerAnim.SetTrigger("Atk");
-            playerEndTurn = true;
-            EnemyDamage(damage);    
+            ActionCommonLogic(15, 30, ATK);
         }   
     }
-
-    private void ActionCommonLogic(int minDamage, int maxDamage, string animTrigger)
-    {
-        // int damage = Random.Range(minDamage, maxDamage);
-        // UpdateBars();
-        // ShowDamageText(damage);
-        // playerAnim.SetTrigger(animTrigger);
-        // playerEndTurn = true;
-        // EnemyDamage(damage);
-    }
-
 
     public void ActionButton3(){
         //playerAnim.SetTrigger("Atk");
         //playerEndTurn = true;
         //EnemyDamage();//esto no debe ir asi debe hacerse una accion en la animacion. minuto 9:36 video 08-Activacion animacion script/Batalla turnos unity
         if (currentJugoValue >= 30){
-            damage = Random.Range(15,30);
+           
             currentJugoValue -= 40;
             currentManaValue += 30;
             if (currentManaValue > 100) currentManaValue = 100;
-            UpdateBars();
-            ShowDamageText(damage);
-            playerAnim.SetTrigger("Atk");
-            playerEndTurn = true;
-            EnemyDamage(damage);    
+            ActionCommonLogic(15, 30, ATK);
         }   
     }
 
     public void ActionButton4(){
-        //playerAnim.SetTrigger("Atk");
-        //playerEndTurn = true;
-        //EnemyDamage();//esto no debe ir asi debe hacerse una accion en la animacion. minuto 9:36 video 08-Activacion animacion script/Batalla turnos unity
         if (currentJugoValue >= 50){
-            damage = Random.Range(35,60);
             currentJugoValue -= 50;
             currentHealthValue += 30;
             if (currentHealthValue > 200) currentHealthValue = 200;
-            UpdateBars();
-            ShowDamageText(damage);
-            playerAnim.SetTrigger("Atk");
-            playerEndTurn = true;
-            EnemyDamage(damage);  
-
+            ActionCommonLogic(35, 60, ATK);
         }   
     }
 
+    private void ActionCommonLogic(int minDamage, int maxDamage, string animTrigger)
+    {
+        //EnemyDamage();//esto no debe ir asi debe hacerse una accion en la animacion. minuto 9:36 video 08-Activacion animacion script/Batalla turnos unity
 
-
+        int damage = Random.Range(minDamage, maxDamage);
+        UpdateBars();
+        ShowDamageText(damage);
+        playerAnim.SetTrigger(animTrigger);
+        playerEndTurn = true;
+        EnemyDamage(damage);
+    }
 
     public bool PlayerEndTurn(){
         if(playerEndTurn){

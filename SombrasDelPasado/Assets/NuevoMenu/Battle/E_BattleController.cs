@@ -9,8 +9,10 @@ using TMPro;
 
 public class E_BattleController : MonoBehaviour
 {
+    private const string ATK = "Atk";
+
     public GameObject markerSelect;
-    private BattleManager sbm;
+    private BattleManager _sbm;
     public bool enemyEndTurn;
     public GameObject playerTarget;
 
@@ -29,45 +31,40 @@ public class E_BattleController : MonoBehaviour
     private Image[] playerHealthBar;
 
     public TMP_Text damageText;
-    int damage = 0;
-    //
+
 
     //nuevo
     void Start()
     {
-        playerHealthBar = sbm.playerHealthBars;
+        playerHealthBar = _sbm.playerHealthBars;
     }
     //
 
     private void Awake(){
-        sbm = FindObjectOfType<BattleManager>();
+        _sbm = FindObjectOfType<BattleManager>();
+
         enemyAnim = GetComponent<Animator>();
     }
 
-    void Update()
-    {
-        
-    }
-
     private void OnMouseDown(){
-        if(sbm.playerActive == null){
+        if(_sbm.playerActive == null){
             return; // No seleccionar al enemigo si no hay jugador activo seleccionado
         }
 
-        if(sbm.enemyTarget != gameObject && sbm.enemyTarget != null){
-            sbm.EnemyDeSelect();
+        if(_sbm.enemyTarget != gameObject && _sbm.enemyTarget != null){
+            _sbm.EnemyDeSelect();
         }
         
         EnemySelect();
-        sbm.EnemySelect(gameObject);
+        _sbm.EnemySelect(gameObject);
     }
 
     private void EnemySelect(){
         markerSelect.SetActive(true);
-        sbm.playerActive.GetComponent<P_BattleController>().action1.SetActive(true);
-        sbm.playerActive.GetComponent<P_BattleController>().action2.SetActive(true);
-        sbm.playerActive.GetComponent<P_BattleController>().action3.SetActive(true);
-        sbm.playerActive.GetComponent<P_BattleController>().action4.SetActive(true);
+        _sbm.playerActive.GetComponent<P_BattleController>().action1.SetActive(true);
+        _sbm.playerActive.GetComponent<P_BattleController>().action2.SetActive(true);
+        _sbm.playerActive.GetComponent<P_BattleController>().action3.SetActive(true);
+        _sbm.playerActive.GetComponent<P_BattleController>().action4.SetActive(true);
     }
 
     public void EnemyDeSelect(){
@@ -75,7 +72,7 @@ public class E_BattleController : MonoBehaviour
     }
 
     public void EnemyAtk(){
-        playerTarget = sbm.players[Random.Range(0,sbm.players.Length)];
+        playerTarget = _sbm.players[Random.Range(0,_sbm.players.Length)];
         //enemyAnim.SetTrigger("Atk");
         //enemyEndTurn = true;
         //PlayerDamage();
@@ -83,36 +80,43 @@ public class E_BattleController : MonoBehaviour
         //nuevo
         int attackType = Random.Range(1,5);
 
+        int minDamage = 0;
+        int maxDamage = 100;
+        string animTrigger = "";
+
         switch (attackType)
         {
             case 1:
                 if (currentManaValue >= 30)
                 {
-                    damage = Random.Range(5,20);
+                    minDamage = 5;
+                    maxDamage = 20;
+                    animTrigger = ATK;
+
                     currentManaValue -= 30;
-                    enemyAnim.SetTrigger("Atk");
-                    ShowDamageText(damage);
                     Debug.Log("ataque1");
                 }
                 break;
             case 2:
                 if (currentManaValue >= 50)
                 {
-                    damage = Random.Range(15,30);
+                    minDamage = 15;
+                    maxDamage = 30;
+                    animTrigger = ATK;
+
                     currentManaValue -= 50;
-                    enemyAnim.SetTrigger("Atk");
-                    ShowDamageText(damage);
                     Debug.Log("ataque2");
                 }
                 break;
             case 3:
                 if (currentJugoValue >= 20)
                 {
-                    damage = Random.Range(35,70);
+                    minDamage = 35;
+                    maxDamage = 70;
+                    animTrigger = ATK;
+
                     currentJugoValue -= 20;
                     currentManaValue += 30;
-                    enemyAnim.SetTrigger("Atk");
-                    ShowDamageText(damage);
                     Debug.Log("ataque3");
                     if (currentManaValue > 150) currentManaValue = 150;
                 }
@@ -120,16 +124,21 @@ public class E_BattleController : MonoBehaviour
             case 4:
                 if (currentJugoValue >= 40)
                 {
-                    damage = Random.Range(35,70);
+                    minDamage = 35;
+                    maxDamage = 70;
+                    animTrigger = ATK;
+
                     currentJugoValue -= 40;
                     currentHealthValue += 20;
-                    enemyAnim.SetTrigger("Atk");
-                    ShowDamageText(damage);
                     Debug.Log("ataque4");
                     if (currentHealthValue > 400) currentHealthValue = 400;
                 }
                 break;
         }
+
+        int damage = Random.Range(minDamage, maxDamage);
+        enemyAnim.SetTrigger(animTrigger);
+        ShowDamageText(damage);
 
         enemyEndTurn = true;
         UpdateBars();
