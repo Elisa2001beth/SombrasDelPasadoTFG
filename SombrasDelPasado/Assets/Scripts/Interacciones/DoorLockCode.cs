@@ -46,21 +46,43 @@ public class DoorLockCode : MonoBehaviour
             currentIndex++;
             UpdateMessageText();
         }
-    } 
+    }
 
 
+
+    //private void UpdateMessageText()
+    //{
+    //    string codeText = "";
+
+    //    for (int i = 0; i < enteredCode.Length; i++)
+    //    {
+    //        codeText += enteredCode[i].ToString();
+    //    }
+
+    //    messageText.text = codeText;
+    //}
 
     private void UpdateMessageText()
     {
         string codeText = "";
 
+        // Convertir los números ingresados en una cadena
         for (int i = 0; i < enteredCode.Length; i++)
         {
-            codeText += enteredCode[i].ToString();
+            // Reemplazar los números no ingresados por guiones "-" y mostrar los números ingresados
+            if (i < currentIndex)
+            {
+                codeText += enteredCode[i].ToString();
+            }
+            else
+            {
+                codeText += "-";
+            }
         }
 
         messageText.text = codeText;
     }
+
 
     private void CheckCode()
     {
@@ -98,7 +120,8 @@ public class DoorLockCode : MonoBehaviour
             enteredCode[i] = 0;
         }
         UpdateMessageText();
-        messageText.color = Color.black; // Restaurar color del texto a negro
+        messageText.color = Color.white; // Restaurar color del texto a negro
+        
     }
 
     private void ResetCode()
@@ -109,7 +132,7 @@ public class DoorLockCode : MonoBehaviour
             enteredCode[i] = 0;
         }
         UpdateMessageText();
-        messageText.color = Color.black; // Restaurar color del texto a negro
+        messageText.color = Color.white; // Restaurar color del texto a negro
     }
 
     private void OpenDoor()

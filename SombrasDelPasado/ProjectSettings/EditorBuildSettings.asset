@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/El vacio.unity
     guid: 0ab2a291315866d40ae3ea1753d8ec47
+  - enabled: 1
+    path: Assets/NuevoMenu/PruebaCombate.unity
+    guid: f4ebbf1c526f2784fa3a74a343b885a4
   m_configObjects: {}
