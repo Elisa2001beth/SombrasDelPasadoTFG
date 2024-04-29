@@ -72,7 +72,7 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetFloat("Volumen", volumeSlider.value);
 
         PlayerPrefs.Save();
-        Debug.Log("Configuraciones Guardadas");
+        //Debug.Log("Configuraciones Guardadas");
     }
 
     public void CargarConfiguraciones()
