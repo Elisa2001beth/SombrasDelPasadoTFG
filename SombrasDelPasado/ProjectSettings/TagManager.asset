@@ -8,6 +8,9 @@ TagManager:
   - Controles
   - Enemy
   - Character
+  - Cat
+  - Door
+  - Lamp
   layers:
   - Default
   - TransparentFX

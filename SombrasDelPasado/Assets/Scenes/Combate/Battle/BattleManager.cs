@@ -52,7 +52,7 @@ public class BattleManager : MonoBehaviour
 
         if (allEnemiesDead) {
             _bState = BattleState.END;
-            // EndGame()
+            EndGame();
         }
         else if (PlayersCanAttack()) {
             _bState = BattleState.PLAYER_TURN;
@@ -94,7 +94,7 @@ public class BattleManager : MonoBehaviour
 
             if (CheckPlayersDeads()) {
                 _bState = BattleState.END;
-                // EndGame()
+                EndGame();
                 break;
             }
         }
@@ -116,6 +116,11 @@ public class BattleManager : MonoBehaviour
         }
 
         return allPlayersDead;
+    }
+
+    private bool IsPlayerDead(P_BattleController player)
+    {
+        return player.GetCurrentHealthValue() <= 0;
     }
 
     public void NextTurn()

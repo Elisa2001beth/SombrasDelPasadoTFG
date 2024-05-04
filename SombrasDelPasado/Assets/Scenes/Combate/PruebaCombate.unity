@@ -2680,7 +2680,7 @@ GameObject:
   - component: {fileID: 842490317}
   - component: {fileID: 842490316}
   m_Layer: 5
-  m_Name: C_HealthBarFill
+  m_Name: C1_HealthBarFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3673,11 +3673,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965261076f27dd34d90396f658d63579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerActive: {fileID: 0}
+  playerActive: {fileID: 987645682}
   players:
   - {fileID: 987645682}
   - {fileID: 2100722125}
-  enemyTarget: {fileID: 0}
+  enemyTarget: {fileID: 445519103}
   enemies:
   - {fileID: 445519103}
   _delayBtwnEnemies: 3
@@ -5152,7 +5152,7 @@ GameObject:
   - component: {fileID: 1248318601}
   - component: {fileID: 1248318600}
   m_Layer: 5
-  m_Name: C_HealthBarFill
+  m_Name: C2_HealthBarFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6090,7 +6090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1fcb0e14e3db37347a3da56813cd6330, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.802582
+      value: 7.31
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1fcb0e14e3db37347a3da56813cd6330, type: 3}
       propertyPath: m_LocalRotation.w

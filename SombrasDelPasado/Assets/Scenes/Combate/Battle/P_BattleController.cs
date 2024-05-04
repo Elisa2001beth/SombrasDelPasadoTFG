@@ -5,12 +5,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 using TMPro;
 
 
 public class P_BattleController : MonoBehaviour
 {
     private const string ATK = "Atk";
+    private const string DIE = "Dead";
+
+
 
     public bool playerEndTurn { get; private set; }
     public GameObject markerSelect;
@@ -35,30 +39,56 @@ public class P_BattleController : MonoBehaviour
 
     private Image[] enemyHealthBar;
 
+    //nuevo
+    private E_BattleController _enemyController;
+
+
     public TMP_Text damageText;
     
     void Start()
     {
         enemyHealthBar = _sbm.enemyHealthBars;
-        
+        healthBar = _sbm.playersHealthBars[Array.IndexOf(_sbm.players, this)];
+
     }
 
     private void Awake(){
         _sbm = FindObjectOfType<BattleManager>();
+        _enemyController = FindObjectOfType<E_BattleController>();
         playerAnim = GetComponent<Animator>();
     }
 
-    private void OnMouseDown(){
+    //private void OnMouseDown(){
 
-        if (playerEndTurn)
+    //    if (playerEndTurn)
+    //    {
+    //        return;
+    //    }
+
+    //    if(_sbm.GetBattleState() == BattleState.PLAYER_TURN) {
+
+
+    //        if(_sbm.playerActive != gameObject && _sbm.playerActive != null)
+    //        {
+    //            _sbm.PlayerDeSelect();
+    //        }
+
+    //        PlayerSelect();
+    //        _sbm.PlayerSelect(this);
+    //    }
+    //}
+
+    private void OnMouseDown()
+    {
+
+        if (playerEndTurn || currentHealthValue <= 0)
         {
             return;
         }
 
-        if(_sbm.GetBattleState() == BattleState.PLAYER_TURN) {
-            
-
-            if(_sbm.playerActive != gameObject && _sbm.playerActive != null)
+        if (_sbm.GetBattleState() == BattleState.PLAYER_TURN)
+        {
+            if (_sbm.playerActive != gameObject && _sbm.playerActive != null)
             {
                 _sbm.PlayerDeSelect();
             }
@@ -68,9 +98,9 @@ public class P_BattleController : MonoBehaviour
         }
     }
 
+
     private void PlayerSelect(){
         markerSelect.SetActive(true);
-        
     }
 
     public void PlayerDeSelect(){
@@ -87,26 +117,23 @@ public class P_BattleController : MonoBehaviour
     //nuevo
 
     public void ActionButton1() {
-        ActionCommonLogic(5, 10, ATK);
+        ActionCommonLogic(5, 15, ATK);
     }
 
     public void ActionButton2() {
         if (currentManaValue >= 20) {
             currentManaValue -= 20;
-            ActionCommonLogic(15, 30, ATK);
+            ActionCommonLogic(20, 35, ATK);
         }   
     }
 
     public void ActionButton3(){
-        //playerAnim.SetTrigger("Atk");
-        //playerEndTurn = true;
-        //EnemyDamage();//esto no debe ir asi debe hacerse una accion en la animacion. minuto 9:36 video 08-Activacion animacion script/Batalla turnos unity
         if (currentJugoValue >= 30){
            
             currentJugoValue -= 40;
             currentManaValue += 30;
             if (currentManaValue > 100) currentManaValue = 100;
-            ActionCommonLogic(15, 30, ATK);
+            ActionCommonLogic(40, 75, ATK);
         }   
     }
 
@@ -115,7 +142,7 @@ public class P_BattleController : MonoBehaviour
             currentJugoValue -= 50;
             currentHealthValue += 30;
             if (currentHealthValue > 200) currentHealthValue = 200;
-            ActionCommonLogic(35, 60, ATK);
+            ActionCommonLogic(80, 100, ATK);
         }   
     }
 
@@ -123,15 +150,20 @@ public class P_BattleController : MonoBehaviour
     {
         //EnemyDamage();//esto no debe ir asi debe hacerse una accion en la animacion. minuto 9:36 video 08-Activacion animacion script/Batalla turnos unity
 
-        int damage = Random.Range(minDamage, maxDamage);
+        int damage = UnityEngine.Random.Range(minDamage, maxDamage);
         UpdateBars();
         ShowDamageText(damage);
         playerAnim.SetTrigger(animTrigger);
         playerEndTurn = true;
-        EnemyDamage(damage);
+        EnemyDamageRecive(damage);
 
         _sbm.CheckEnemyDeads();
         _sbm.PlayerDeSelect();
+    }
+
+    public float GetCurrentHealthValue()
+    {
+        return currentHealthValue;
     }
 
     public bool PlayerEndTurn(){
@@ -147,8 +179,20 @@ public class P_BattleController : MonoBehaviour
         return false;
     }
 
-    public void EnemyDamage(int damage){
+    public void PlayerDamage(int damage) //arreglar lo de las barras de vida ya que solo resta la primera y la segunda barra no se resta
+    {
+        currentHealthValue -= damage;
+        UpdateBars();
+        if (currentHealthValue <= 0)
+        {
+            playerAnim.SetTrigger(DIE); // Activar la animación de "Dead" si la vida llega a cero
+        }
+    }
+
+    public void EnemyDamageRecive(int damage){
         _sbm.enemyTarget.enemyAnim.SetTrigger("Damage");
+        //_enemyController.currentHealthValue -= damage;// esto tiene que ser del enemigo y esta cogiendo la del player
+        _enemyController.EnemyDamage(damage);
     }
 
     //nuevo
@@ -157,6 +201,7 @@ public class P_BattleController : MonoBehaviour
         healthBar.fillAmount = currentHealthValue / 200f;
         manaBar.fillAmount = currentManaValue / 100f;
         jugoBar.fillAmount = currentJugoValue / 80f;
+        Debug.Log("jugador" + currentHealthValue);
     }
     //
 
