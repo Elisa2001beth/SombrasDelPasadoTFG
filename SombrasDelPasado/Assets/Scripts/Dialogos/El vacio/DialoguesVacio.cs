@@ -5,29 +5,31 @@ using DialogueEditor;
 
 public class DialoguesVacio : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogueMark;
-
-    public NPCConversation conversation; // Referencia a la conversación que deseas iniciar
+    public NPCConversation catConversation;
+    public NPCConversation doorConversation;
+    public NPCConversation lampConversation;
     private bool isPlayerInRange;
     private bool didDialogueStart;
 
-    private PlayerController playerController; // Referencia al controlador del jugador
+    [SerializeField] private GameObject dialogueMark;
+
+    private PlayerController playerController;
 
     void Start()
     {
-        playerController = FindObjectOfType<PlayerController>(); // Encontrar la referencia al controlador del jugador
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     void Update()
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
-
             if (!didDialogueStart)
             {
                 StartDialogue();
-            }
+                playerController.PermitirMovimiento(false);
 
+            }
         }
     }
 
@@ -35,37 +37,46 @@ public class DialoguesVacio : MonoBehaviour
     {
         didDialogueStart = true;
         dialogueMark.SetActive(false);
-        Invoke("StartConversation", 0.5f);
+        Invoke("StartConversationWithDelay", 0.5f);
+    }
 
-
-
+    private void StartConversationWithDelay()
+    {
+        playerController.PermitirMovimiento(false);
+        StartConversation();
     }
 
     public void StartConversation()
     {
-        playerController.PermitirMovimiento(false); // Restringir el movimiento del jugador
-        ConversationManager.Instance.StartConversation(conversation);
+        string tag = gameObject.tag;
+        if (tag == "Cat")
+        {
+            ConversationManager.Instance.StartConversation(catConversation);
+        }
+        else if (tag == "Door")
+        {
+            ConversationManager.Instance.StartConversation(doorConversation);
+        }
+        else if (tag == "Lamp")
+        {
+            ConversationManager.Instance.StartConversation(lampConversation);
+        }
     }
 
     public void EndConversation()
     {
         playerController.PermitirMovimiento(true); // Permitir que el jugador se mueva nuevamente
-        didDialogueStart = false; // Reiniciar la bandera de inicio de diálogo
+        didDialogueStart = false; // Restablecer la variable para permitir que se inicie el diálogo nuevamente
         dialogueMark.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider collider)
     {
-        
-        Debug.Log("chocando");
         if (collider.CompareTag("Player"))
         {
             isPlayerInRange = true;
             dialogueMark.SetActive(true);
-            Debug.Log("Dentro");
-
         }
-
     }
 
     private void OnTriggerExit(Collider collider)
@@ -74,8 +85,6 @@ public class DialoguesVacio : MonoBehaviour
         {
             dialogueMark.SetActive(false);
             isPlayerInRange = false;
-
         }
-
     }
 }
