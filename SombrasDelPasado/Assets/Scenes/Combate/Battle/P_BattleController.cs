@@ -1,4 +1,5 @@
 
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -96,13 +97,13 @@ public class P_BattleController : MonoBehaviour
     //nuevo
 
     public void ActionButton1() {
-        ActionCommonLogic(5, 15, ATK);
+        ActionCommonLogic(5, 20, ATK);
     }
 
     public void ActionButton2() {
         if (currentManaValue >= 20) {
             currentManaValue -= 20;
-            ActionCommonLogic(20, 35, ATK);
+            ActionCommonLogic(30, 50, ATK);
         }   
     }
 
@@ -158,7 +159,7 @@ public class P_BattleController : MonoBehaviour
         return false;
     }
 
-    public void PlayerDamage(int damage) //arreglar lo de las barras de vida ya que solo resta la primera y la segunda barra no se resta
+    public void PlayerDamage(int damage) 
     {
         currentHealthValue -= damage;
         UpdateBars();
@@ -209,6 +210,14 @@ public class P_BattleController : MonoBehaviour
 
     public void ResetTurn()
     {
+        playerEndTurn = false;
+    }
+
+    public void ResetCombat()
+    {
+        currentHealthValue = 200f;
+        currentManaValue = 100f;
+        currentJugoValue = 80f;
         playerEndTurn = false;
     }
 }

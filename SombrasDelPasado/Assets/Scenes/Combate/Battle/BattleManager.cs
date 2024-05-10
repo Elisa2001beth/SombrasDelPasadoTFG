@@ -230,7 +230,9 @@ public class BattleManager : MonoBehaviour
     public GameObject mainCamera;
     public GameObject battleCamera;
     public GameObject[] objetosADesactivar;
-    //
+    public GameObject enemigoObject;
+
+
 
 
     public P_BattleController playerActive;
@@ -277,8 +279,19 @@ public class BattleManager : MonoBehaviour
         playerController.puedeMoverse = false;
     }
 
+    public void ActivateObjects()
+    {
+        foreach (GameObject objeto in objetosADesactivar)
+        {
+            objeto.SetActive(true);
+        }
+
+    }
+
     public void ResetBarsPlayer()
     {
+        
+
         foreach (Image healthBar in playersHealthBars)
         {
             healthBar.fillAmount = 1f;
@@ -297,6 +310,8 @@ public class BattleManager : MonoBehaviour
 
     public void ResetBarsEnemies()
     {
+
+
         foreach (Image healthBar in enemyHealthBars)
         {
             healthBar.fillAmount = 1f;
@@ -463,17 +478,34 @@ public class BattleManager : MonoBehaviour
             ResetBarsPlayer();
             ResetBarsEnemies();
             panel.SetActive(false);
+            ActivateObjects();
+
+            foreach (P_BattleController player in players)
+            {
+                player.ResetCombat();
+            }
+
+            foreach (E_BattleController enemy in enemies)
+            {
+                enemy.ResetCombat();
+            }
+
+
+
+
         }
         else if (allEnemiesDead)
         {
             Debug.Log("El enemigo ha perdido");
             panel.SetActive(false);
             playerController.puedeMoverse = true;
-
+            ActivateObjects();
+            enemigoObject.SetActive(false);
+            
         }
 
-
     }
+
     //
 
     public void PlayerSelect(P_BattleController PlayerSelect)

@@ -25,7 +25,7 @@ public class E_BattleController : MonoBehaviour
     public Image manaBar;
     public Image jugoBar;
 
-    private float currentHealthValue = 400f;
+    private float currentHealthValue = 250f;
     private float currentManaValue = 150f;
     private float currentJugoValue = 120f;
 
@@ -197,8 +197,8 @@ public class E_BattleController : MonoBehaviour
                 case 2:
                     if (currentManaValue >= 50)
                     {
-                        minDamage = 20;
-                        maxDamage = 35;
+                        minDamage = 15;
+                        maxDamage = 30;
                       
                         animTrigger = ATK;
 
@@ -209,8 +209,8 @@ public class E_BattleController : MonoBehaviour
                 case 3:
                     if (currentJugoValue >= 20)
                     {
-                        minDamage = 40;
-                        maxDamage = 55;
+                        minDamage = 30;
+                        maxDamage = 45;
                         
                         animTrigger = ATK;
 
@@ -223,15 +223,15 @@ public class E_BattleController : MonoBehaviour
                 case 4:
                     if (currentJugoValue >= 40)
                     {
-                        minDamage = 60;
-                        maxDamage = 80;
+                        minDamage = 45;
+                        maxDamage = 60;
                         
                         animTrigger = ATK;
 
-                        currentJugoValue -= 40;
+                        currentJugoValue -= 80;
                         currentHealthValue += 20;
                         Debug.Log("ataque4");
-                        if (currentHealthValue > 400) currentHealthValue = 400;
+                        if (currentHealthValue > 250) currentHealthValue = 250;
                     }
                     break;
             }
@@ -256,7 +256,7 @@ public class E_BattleController : MonoBehaviour
     //nuevo
     public void UpdateBars()
     {
-        healthBar.fillAmount = currentHealthValue / 400f;
+        healthBar.fillAmount = currentHealthValue / 250f;
         manaBar.fillAmount = currentManaValue / 150f;
         jugoBar.fillAmount = currentJugoValue / 120f;
         Debug.Log("enemigo" + currentHealthValue);
@@ -266,7 +266,7 @@ public class E_BattleController : MonoBehaviour
     public void PlayerDamageRecive(int damage){
         playerTarget.GetComponent<P_BattleController>().playerAnim.SetTrigger("Damage");
         
-        currentHealthValue -= damage;
+        //currentHealthValue -= damage;
         if (currentHealthValue <= 0)
         {
             // El jugador ha muerto, por lo que lo eliminamos de la lista de jugadores vivos
@@ -274,7 +274,7 @@ public class E_BattleController : MonoBehaviour
             
         }
 
-        _playerController.PlayerDamage(damage);
+        //_playerController.PlayerDamage(damage);
 
     }
 
@@ -314,5 +314,13 @@ public class E_BattleController : MonoBehaviour
     public void ResetTurn()
     {
         enemyEndTurn = false;
+    }
+    public void ResetCombat()
+    {
+        currentHealthValue = 250f;
+        currentManaValue = 150f;
+        currentJugoValue = 120f;
+        enemyEndTurn = false;
+
     }
 }

@@ -30,12 +30,16 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-  
         if (!jugadorDetectado && other.CompareTag("Player"))
         {
-           
+            Debug.Log("Colision");
             battleManager.StartBattle();
+         
             jugadorDetectado = true;  // Marcar que el jugador ha sido detectado
+        }
+        else
+        {
+            jugadorDetectado = false;
         }
     }
 
