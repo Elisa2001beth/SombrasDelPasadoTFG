@@ -11,6 +11,7 @@ TagManager:
   - Cat
   - Door
   - Lamp
+  - DoorOpen
   layers:
   - Default
   - TransparentFX
