@@ -2019,9 +2019,9 @@ RectTransform:
   - {fileID: 1087365670}
   - {fileID: 1319818170}
   - {fileID: 987645676}
+  - {fileID: 445519106}
   - {fileID: 985831815}
   - {fileID: 1076848549}
-  - {fileID: 445519106}
   m_Father: {fileID: 655738153}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2190,6 +2190,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965261076f27dd34d90396f658d63579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panel: {fileID: 0}
+  lukePlayer: {fileID: 0}
+  emilyPlayer: {fileID: 0}
+  teleportTargetLuke: {fileID: 0}
+  teleportTargetEmily: {fileID: 0}
+  objetosADesactivar: []
   playerActive: {fileID: 987645682}
   players:
   - {fileID: 987645682}
@@ -2271,7 +2277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6a3276ef162f22f4e888e03e6a9729d7, type: 3}
       propertyPath: m_Name
-      value: Luke_vacio (2)
+      value: luke
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6a3276ef162f22f4e888e03e6a9729d7, type: 3}
       propertyPath: m_TagString
