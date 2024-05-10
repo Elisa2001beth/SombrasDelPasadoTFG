@@ -48,18 +48,7 @@ public class E_BattleController : MonoBehaviour
         enemyAnim = GetComponent<Animator>();
     }
 
-    //private void OnMouseDown(){
-    //    if(_sbm.playerActive == null){
-    //        return; // No seleccionar al enemigo si no hay jugador activo seleccionado
-    //    }
-
-    //    if(_sbm.enemyTarget != gameObject && _sbm.enemyTarget != null){
-    //        _sbm.EnemyDeSelect();
-    //    }
-
-    //    EnemySelect();
-    //    _sbm.EnemySelect(this);
-    //}
+ 
 
     private void OnMouseDown()
     {
@@ -167,12 +156,10 @@ public class E_BattleController : MonoBehaviour
 
     public void EnemyAtk()
     {
-        // Obtener una lista de jugadores vivos
-        //List<P_BattleController> alivePlayers = new List<P_BattleController>();
+     
         foreach (P_BattleController player in _sbm.players)
         {
-            Debug.Log("Nombre del jugador: " + player.name + ", Salud actual: " + player.GetCurrentHealthValue());
-
+          
             float playerHealth = player.GetCurrentHealthValue(); // Obteniendo la salud actual del jugador
             if (playerHealth > 0)
             {
@@ -186,9 +173,7 @@ public class E_BattleController : MonoBehaviour
         {
             // Seleccionar un jugador vivo al azar
             playerTarget = alivePlayers[Random.Range(0, alivePlayers.Count)];
-            //P_BattleController playerTarget = alivePlayers[Random.Range(0, alivePlayers.Count)];
-            // Resto del código para el ataque del enemigo...
-            // Aquí puedes utilizar playerTarget para realizar el ataque al jugador seleccionado
+           
             int attackType = Random.Range(1, 5);
 
             int minDamage = 0;
@@ -262,11 +247,7 @@ public class E_BattleController : MonoBehaviour
             //UpdateBars();
             PlayerDamageRecive(damage);
         }
-        else
-        {
-            // No hay jugadores vivos para atacar, puedes manejar esta situación como desees
-            Debug.Log("No hay jugadores vivos para atacar.");
-        }
+       
 
 
     }
@@ -290,7 +271,7 @@ public class E_BattleController : MonoBehaviour
         {
             // El jugador ha muerto, por lo que lo eliminamos de la lista de jugadores vivos
             alivePlayers.Remove(playerTarget);
-            Debug.Log("El jugador ha muerto, el turno del enemigo se reiniciará.");
+            
         }
 
         _playerController.PlayerDamage(damage);

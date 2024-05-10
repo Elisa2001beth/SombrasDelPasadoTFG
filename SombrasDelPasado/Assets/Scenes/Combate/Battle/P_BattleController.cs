@@ -1,6 +1,4 @@
 
-///////////////////////////////////////////////////////////////////////
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -58,25 +56,6 @@ public class P_BattleController : MonoBehaviour
         playerAnim = GetComponent<Animator>();
     }
 
-    //private void OnMouseDown(){
-
-    //    if (playerEndTurn)
-    //    {
-    //        return;
-    //    }
-
-    //    if(_sbm.GetBattleState() == BattleState.PLAYER_TURN) {
-
-
-    //        if(_sbm.playerActive != gameObject && _sbm.playerActive != null)
-    //        {
-    //            _sbm.PlayerDeSelect();
-    //        }
-
-    //        PlayerSelect();
-    //        _sbm.PlayerSelect(this);
-    //    }
-    //}
 
     private void OnMouseDown()
     {
