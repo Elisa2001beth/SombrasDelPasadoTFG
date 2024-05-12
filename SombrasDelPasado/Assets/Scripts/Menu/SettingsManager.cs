@@ -61,7 +61,7 @@ public class SettingsManager : MonoBehaviour
         // Verificar si los objetos están asignados
         if (toggleFullScreen == null || resolutionDropdown == null || qualityDropdown == null || volumeSlider == null)
         {
-            Debug.LogError("Uno o más objetos de la UI no están asignados.");
+            
             return;
         }
 

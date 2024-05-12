@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-//TMP_Text
 
 public class DoorLockCode : MonoBehaviour
 {
@@ -12,13 +11,13 @@ public class DoorLockCode : MonoBehaviour
     public TMP_Text messageText; // Texto para mostrar mensajes al usuario y números ingresados
     public Color correctColor = Color.green; // Color para el código correcto
     public Color incorrectColor = Color.red; // Color para el código incorrecto
+    public Color grayColor = Color.gray; // Color para los números ingresados
 
     private int[] correctCode = { 0, 4, 2 }; // Código correcto
     private int[] enteredCode = new int[3]; // Código ingresado por el usuario
     private int currentIndex = 0; // Índice actual del código ingresado
 
-    //
-    public Color grayColor = Color.gray; // Color para los números ingresados
+    
 
 
 
@@ -48,19 +47,6 @@ public class DoorLockCode : MonoBehaviour
         }
     }
 
-
-
-    //private void UpdateMessageText()
-    //{
-    //    string codeText = "";
-
-    //    for (int i = 0; i < enteredCode.Length; i++)
-    //    {
-    //        codeText += enteredCode[i].ToString();
-    //    }
-
-    //    messageText.text = codeText;
-    //}
 
     private void UpdateMessageText()
     {
@@ -138,10 +124,6 @@ public class DoorLockCode : MonoBehaviour
     private void OpenDoor()
     {
 
-        // Aquí puedes añadir la lógica para abrir la puerta.
-        // Por ejemplo, desactivar la puerta cerrada y activar la puerta abierta.
-        // doorClosedGameObject.SetActive(false);
-        // doorOpenGameObject.SetActive(true);
 
 
         //panel.SetActive(false);
@@ -149,7 +131,6 @@ public class DoorLockCode : MonoBehaviour
         Invoke("AbrirPuerta", 2f);
         Invoke("EliminarPanel",3f);
 
-        //puerta_anim.SetTrigger("Open");
     }
 
     public void DesactivarPanel(){

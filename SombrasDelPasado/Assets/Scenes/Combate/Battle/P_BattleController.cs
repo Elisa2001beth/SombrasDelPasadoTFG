@@ -169,6 +169,9 @@ public class P_BattleController : MonoBehaviour
         }
     }
 
+
+
+
     public void EnemyDamageRecive(int damage){
         _sbm.enemyTarget.enemyAnim.SetTrigger("Damage");
         //_enemyController.currentHealthValue -= damage;// esto tiene que ser del enemigo y esta cogiendo la del player

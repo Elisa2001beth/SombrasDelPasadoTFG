@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _turnSpeed = 360;
     private Vector3 _input;
 
-    //nuevo
 
     // Animator reference
     private Animator _animator;

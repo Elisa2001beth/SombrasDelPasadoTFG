@@ -19,6 +19,7 @@ public class Album : MonoBehaviour
     [SerializeField] TMP_Text zoomDialogText; // Texto del diálogo
     private int zoomIndex = 0;
 
+ 
     private void Start()
     {
         InitialState();
@@ -41,12 +42,14 @@ public class Album : MonoBehaviour
         zoomPanel.SetActive(true);
         StartCoroutine(TypeDialogue(dialogues[zoomIndex])); // Iniciar efecto de máquina de escribir
         UpdateZoomButtons();
+        
     }
 
     private void UpdateZoomButtons()
     {
         zoomForwardButton.interactable = zoomIndex < images.Count - 1;
         zoomBackButton.interactable = zoomIndex > 0;
+        
     }
 
     IEnumerator TypeDialogue(string dialogue)
@@ -58,15 +61,17 @@ public class Album : MonoBehaviour
         }
     }
 
+    
+
+
     public void ZoomForward()
     {
         if (zoomIndex < images.Count - 1)
         {
             zoomIndex++;
-            zoomImage.sprite = images[zoomIndex];
-            zoomDialogText.text = ""; // Reiniciar el texto
-            StartCoroutine(TypeDialogue(dialogues[zoomIndex])); // Iniciar efecto de máquina de escribir
-            UpdateZoomButtons();
+            Debug.Log("Zoom Index: " + zoomIndex);
+            Debug.Log("Image Count: " + images.Count);
+            UpdateZoomContent();
         }
     }
 
@@ -75,11 +80,17 @@ public class Album : MonoBehaviour
         if (zoomIndex > 0)
         {
             zoomIndex--;
-            zoomImage.sprite = images[zoomIndex];
-            zoomDialogText.text = ""; // Reiniciar el texto
-            StartCoroutine(TypeDialogue(dialogues[zoomIndex])); // Iniciar efecto de máquina de escribir
-            UpdateZoomButtons();
+            
+            UpdateZoomContent();
         }
+    }
+
+    private void UpdateZoomContent()
+    {
+        zoomImage.sprite = images[zoomIndex];
+        zoomDialogText.text = ""; // Reiniciar el texto
+        StartCoroutine(TypeDialogue(dialogues[zoomIndex])); // Iniciar efecto de máquina de escribir
+        UpdateZoomButtons();
     }
 
     public void CloseZoomPanel()

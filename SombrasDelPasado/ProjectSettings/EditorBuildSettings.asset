@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fantasia.unity
     guid: e5c81eea82d3d704482726517b2d8a29
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Combate/PruebaCombate.unity
     guid: f4ebbf1c526f2784fa3a74a343b885a4
   m_configObjects: {}
