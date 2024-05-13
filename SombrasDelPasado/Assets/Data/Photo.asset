@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
-  <Name>k__BackingField: phptp
-  <Description>k__BackingField: "\xF1mkldnskjf"
-  <ItemImage>k__BackingField: {fileID: 0}
+  <Name>k__BackingField: Flashback
+  <Description>k__BackingField: Emily en el parque
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: c4cf0864a6d369246928045b2662d208, type: 3}
   <DefaultParametersList>k__BackingField: []
   <actionSFX>k__BackingField: {fileID: 0}
-  <inspectPanel>k__BackingField: {fileID: 729228731012622861, guid: 1a8781952907f8e4cb0b1ef873ac0c56, type: 3}
+  onInspect:
+    m_PersistentCalls:
+      m_Calls: []

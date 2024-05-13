@@ -6,7 +6,8 @@ using TMPro;
 
 public class E_BattleController : MonoBehaviour
 {
-    private const string ATK = "Atk";
+    private const string JUMP = "Atk";
+    private const string FIREBALL = "Atk2";
     private const string DIE = "Dead";
 
     public GameObject markerSelect;
@@ -78,81 +79,7 @@ public class E_BattleController : MonoBehaviour
         markerSelect.SetActive(false);
     }
 
-    //public void EnemyAtk(){
-    //    // TODO: Comprobar que el jugador seleccionado esté vivo.
-    //    // 1 Obtener un array con solo los vivos
-    //    // 2 Obtener random de ese nuevo array
-
-    //    playerTarget = _sbm.players[Random.Range(0,_sbm.players.Length)];
-
-    //    //nuevo
-    //    int attackType = Random.Range(1,5);
-
-    //    int minDamage = 0;
-    //    int maxDamage = 100;
-    //    string animTrigger = "";
-
-    //    switch (attackType)
-    //    {
-    //        case 1:
-    //            if (currentManaValue >= 30)
-    //            {
-    //                minDamage = 5;
-    //                maxDamage = 15;
-    //                animTrigger = ATK;
-
-    //                currentManaValue -= 30;
-    //                Debug.Log("ataque1");
-    //            }
-    //            break;
-    //        case 2:
-    //            if (currentManaValue >= 50)
-    //            {
-    //                minDamage = 20;
-    //                maxDamage = 35;
-    //                animTrigger = ATK;
-
-    //                currentManaValue -= 50;
-    //                Debug.Log("ataque2");
-    //            }
-    //            break;
-    //        case 3:
-    //            if (currentJugoValue >= 20)
-    //            {
-    //                minDamage = 40;
-    //                maxDamage = 55;
-    //                animTrigger = ATK;
-
-    //                currentJugoValue -= 35;
-    //                currentManaValue += 40;
-    //                Debug.Log("ataque3");
-    //                if (currentManaValue > 150) currentManaValue = 150;
-    //            }
-    //            break;
-    //        case 4:
-    //            if (currentJugoValue >= 40)
-    //            {
-    //                minDamage = 60;
-    //                maxDamage = 80;
-    //                animTrigger = ATK;
-
-    //                currentJugoValue -= 40;
-    //                currentHealthValue += 20;
-    //                Debug.Log("ataque4");
-    //                if (currentHealthValue > 400) currentHealthValue = 400;
-    //            }
-    //            break;
-    //    }
-
-    //    int damage = Random.Range(minDamage, maxDamage);
-    //    enemyAnim.SetTrigger(animTrigger);
-    //    ShowDamageText(damage);
-
-    //    enemyEndTurn = true;
-    //    UpdateBars();
-    //    PlayerDamageRecive(damage);
-    //    //
-    //}
+ 
 
     public void EnemyAtk()
     {
@@ -188,7 +115,7 @@ public class E_BattleController : MonoBehaviour
                         minDamage = 5;
                         maxDamage = 15;
                         
-                        animTrigger = ATK;
+                        animTrigger = FIREBALL;
 
                         currentManaValue -= 30;
                         Debug.Log("ataque1");
@@ -200,7 +127,7 @@ public class E_BattleController : MonoBehaviour
                         minDamage = 15;
                         maxDamage = 30;
                       
-                        animTrigger = ATK;
+                        animTrigger = JUMP;
 
                         currentManaValue -= 50;
                         Debug.Log("ataque2");
@@ -212,7 +139,7 @@ public class E_BattleController : MonoBehaviour
                         minDamage = 30;
                         maxDamage = 45;
                         
-                        animTrigger = ATK;
+                        animTrigger = FIREBALL;
 
                         currentJugoValue -= 35;
                         currentManaValue += 40;
@@ -226,7 +153,7 @@ public class E_BattleController : MonoBehaviour
                         minDamage = 45;
                         maxDamage = 60;
                         
-                        animTrigger = ATK;
+                        animTrigger = JUMP;
 
                         currentJugoValue -= 80;
                         currentHealthValue += 20;
@@ -238,7 +165,7 @@ public class E_BattleController : MonoBehaviour
 
             int damage = Random.Range(minDamage, maxDamage);
             enemyAnim.SetTrigger(animTrigger);
-            ShowDamageText(damage);
+            
 
             enemyEndTurn = true;
             
@@ -246,6 +173,7 @@ public class E_BattleController : MonoBehaviour
             playerTarget.UpdateBars();
             //UpdateBars();
             PlayerDamageRecive(damage);
+            ShowDamageText(damage);
         }
        
 
@@ -264,7 +192,7 @@ public class E_BattleController : MonoBehaviour
     //
 
     public void PlayerDamageRecive(int damage){
-        playerTarget.GetComponent<P_BattleController>().playerAnim.SetTrigger("Damage");
+        //playerTarget.GetComponent<P_BattleController>().playerAnim.SetTrigger("Damage");
         
         //currentHealthValue -= damage;
         if (currentHealthValue <= 0)
@@ -278,14 +206,25 @@ public class E_BattleController : MonoBehaviour
 
     }
 
+    public void PlayerDamage()
+    {
+        playerTarget.GetComponent<P_BattleController>().playerAnim.SetTrigger("Damage");
+    }
+
     public void EnemyDamage(int damage)
     {
         currentHealthValue -= damage;
         UpdateBars();
         if (currentHealthValue <= 0)
         {
-            enemyAnim.SetTrigger(DIE); // Activar la animación de "Dead" si la vida llega a cero
+            //enemyAnim.SetTrigger(DIE); // Activar la animación de "Dead" si la vida llega a cero
+            EnemyDead();
         }
+    }
+
+    public void EnemyDead()
+    {
+        enemyAnim.SetTrigger(DIE); // Activar la animación de "Dead" si la vida llega a cero
     }
 
     void ShowDamageText(int damage)

@@ -10,7 +10,7 @@ using TMPro;
 
 public class P_BattleController : MonoBehaviour
 {
-    private const string ATK = "Atk";
+ 
     private const string DIE = "Dead";
 
 
@@ -97,13 +97,13 @@ public class P_BattleController : MonoBehaviour
     //nuevo
 
     public void ActionButton1() {
-        ActionCommonLogic(5, 20, ATK);
+        ActionCommonLogic(5, 20, "Atk1");
     }
 
     public void ActionButton2() {
         if (currentManaValue >= 20) {
             currentManaValue -= 20;
-            ActionCommonLogic(30, 50, ATK);
+            ActionCommonLogic(30, 50, "Atk2");
         }   
     }
 
@@ -113,7 +113,7 @@ public class P_BattleController : MonoBehaviour
             currentJugoValue -= 40;
             currentManaValue += 30;
             if (currentManaValue > 100) currentManaValue = 100;
-            ActionCommonLogic(40, 75, ATK);
+            ActionCommonLogic(40, 75, "Atk3");
         }   
     }
 
@@ -122,7 +122,7 @@ public class P_BattleController : MonoBehaviour
             currentJugoValue -= 50;
             currentHealthValue += 30;
             if (currentHealthValue > 200) currentHealthValue = 200;
-            ActionCommonLogic(80, 100, ATK);
+            ActionCommonLogic(80, 100, "Atk4");
         }   
     }
 
@@ -165,18 +165,30 @@ public class P_BattleController : MonoBehaviour
         UpdateBars();
         if (currentHealthValue <= 0)
         {
-            playerAnim.SetTrigger(DIE); // Activar la animación de "Dead" si la vida llega a cero
+            PlayerDead();
         }
+    }
+
+    public void PlayerDead()
+    {
+        playerAnim.SetTrigger(DIE); // Activar la animación de "Dead" si la vida llega a cero
     }
 
 
 
 
     public void EnemyDamageRecive(int damage){
-        _sbm.enemyTarget.enemyAnim.SetTrigger("Damage");
+        //_sbm.enemyTarget.enemyAnim.SetTrigger("Damage");
         //_enemyController.currentHealthValue -= damage;// esto tiene que ser del enemigo y esta cogiendo la del player
         _enemyController.EnemyDamage(damage);
     }
+
+    public void EnemyDamage()
+    {
+        _sbm.enemyTarget.enemyAnim.SetTrigger("Damage");
+    }
+
+
 
     //nuevo
     public void UpdateBars()

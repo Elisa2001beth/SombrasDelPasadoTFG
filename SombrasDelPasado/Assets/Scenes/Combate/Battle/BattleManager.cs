@@ -154,7 +154,9 @@ public class BattleManager : MonoBehaviour
 
         if (allEnemiesDead)
         {
+            
             _bState = BattleState.END;
+
             EndGame();
             
         }
@@ -201,6 +203,7 @@ public class BattleManager : MonoBehaviour
             if (CheckPlayersDeads())
             {
                 _bState = BattleState.END;
+                
                 EndGame();
                
                 break;
@@ -280,7 +283,7 @@ public class BattleManager : MonoBehaviour
         if (allPlayersDead)
         {
             Debug.Log("El jugador ha perdido");
-
+            
             ResetPlayerPosition();
             ResetBarsPlayer();
             ResetBarsEnemies();
@@ -303,6 +306,7 @@ public class BattleManager : MonoBehaviour
         }
         else if (allEnemiesDead)
         {
+            
             Debug.Log("El enemigo ha perdido");
             panel.SetActive(false);
             playerController.puedeMoverse = true;
