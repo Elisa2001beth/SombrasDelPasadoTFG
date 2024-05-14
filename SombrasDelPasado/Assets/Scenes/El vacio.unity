@@ -468,6 +468,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1685896222}
   - {fileID: 1414356174}
   - {fileID: 1124552924}
   m_Father: {fileID: 0}
@@ -717,7 +718,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3.2120848, y: 5.6280413, z: 1.9167683}
   m_Center: {x: -1.1060416, y: 0.9859765, z: -0.42907435}
@@ -728,7 +729,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385232796}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7139215eff725f40a58e1ed98e3153f, type: 3}
   m_Name: 
@@ -737,6 +738,7 @@ MonoBehaviour:
   doorConversation: {fileID: 634106655}
   lampConversation: {fileID: 1852956159}
   dialogueMark: {fileID: 44980378}
+  doorLockCode: {fileID: 1685896223}
 --- !u!1 &388082006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,19 +1385,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentIDCounter: 38
-  json: "{\"Options\":[{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-75,\"yPos\":156.2},\"ID\":36,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Si\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":149,\"yPos\":151.2},\"ID\":37,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"No\",\"parentUIDs\":[0],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":36},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":37}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":-65,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Deber\xEDa
-    salir de aqui?\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Luke\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
+  CurrentIDCounter: 49
+  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableBoolCondition:#DialogueEditor\",\"ParameterName\":\"codeCorrect\",\"CheckType\":0,\"RequiredValue\":true}],\"NodeUID\":48},{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableBoolCondition:#DialogueEditor\",\"ParameterName\":\"codeCorrect\",\"CheckType\":0,\"RequiredValue\":false}],\"NodeUID\":42}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":78.80002,\"yPos\":164.200012},\"ID\":36,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Si\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":295.800018,\"yPos\":164.200012},\"ID\":37,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"No\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":201.800018,\"yPos\":362.2},\"ID\":45,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":null,\"parentUIDs\":[42],\"SpeechUID\":-1}],\"Parameters\":[{\"__type\":\"EditableBoolParameter:#DialogueEditor\",\"ParameterName\":\"codeCorrect\",\"BoolValue\":false}],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":36},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":37}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":171.800018,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Deber\xEDa
+    salir de aqui?\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Luke\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":45}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":201.800018,\"yPos\":253.200012},\"ID\":42,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"La
+    puerta parece cerrada. Debe haber alguna manera de poder desbloquear esta puerta.\",\"parentUIDs\":[36],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Luke\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-20,\"yPos\":252.200012},\"ID\":48,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":null,\"parentUIDs\":[36],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 0}
+  DefaultFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
   NodeSerializedDataList:
   - {fileID: 1982907211}
   - {fileID: 1982907215}
   - {fileID: 1982907216}
-  ContinueFont: {fileID: 0}
-  EndConversationFont: {fileID: 0}
+  - {fileID: 1982907220}
+  - {fileID: 1982907218}
+  - {fileID: 1982907221}
+  ContinueFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
+  EndConversationFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
   Event:
     m_PersistentCalls:
       m_Calls: []
@@ -1731,6 +1737,7 @@ GameObject:
   - component: {fileID: 849404860}
   - component: {fileID: 849404859}
   - component: {fileID: 849404858}
+  - component: {fileID: 849404862}
   m_Layer: 0
   m_Name: ConversationEventInfo
   m_TagString: Untagged
@@ -1752,21 +1759,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1124552925}
-        m_TargetAssemblyTypeName: DialoguesVacio, Assembly-CSharp
-        m_MethodName: EndConversation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   NodeID: 0
-  TMPFont: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &849404859
@@ -1822,6 +1817,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1054599007}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &849404862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849404857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1124552925}
+        m_TargetAssemblyTypeName: DialoguesVacio, Assembly-CSharp
+        m_MethodName: EndConversation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  NodeID: 28
+  TMPFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
 --- !u!1001 &954012315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2130,16 +2156,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentIDCounter: 28
-  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":166.6,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Miau","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Gato","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
+  CurrentIDCounter: 29
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":128,"yPos":264.2},"ID":28,"ParamActions":[],"TMPFontGUID":null,"Text":"End","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":28}],"EditorInfo":{"isRoot":true,"xPos":122,"yPos":166},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Miau","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Gato","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 0}
+  DefaultFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
   NodeSerializedDataList:
   - {fileID: 849404858}
-  ContinueFont: {fileID: 0}
-  EndConversationFont: {fileID: 0}
+  - {fileID: 849404862}
+  ContinueFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
+  EndConversationFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
   Event:
     m_PersistentCalls:
       m_Calls:
@@ -2293,6 +2320,7 @@ MonoBehaviour:
   doorConversation: {fileID: 634106655}
   lampConversation: {fileID: 1852956159}
   dialogueMark: {fileID: 44980378}
+  doorLockCode: {fileID: 0}
 --- !u!1 &1124552923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,6 +2374,7 @@ MonoBehaviour:
   doorConversation: {fileID: 634106655}
   lampConversation: {fileID: 1852956159}
   dialogueMark: {fileID: 44980378}
+  doorLockCode: {fileID: 1685896223}
 --- !u!64 &1133821257
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2735,7 +2764,7 @@ GameObject:
   - component: {fileID: 1229504374}
   - component: {fileID: 1229504377}
   - component: {fileID: 1229504376}
-  - component: {fileID: 1229504375}
+  - component: {fileID: 1229504378}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -2758,27 +2787,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 543450651712734986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1229504375
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1229504373}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1229504376
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2829,6 +2837,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229504373}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &1229504378
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229504373}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000005, y: 1, z: 1.0000004}
+  m_Center: {x: 0.0000011920929, y: 0, z: 0.00000035762787}
 --- !u!1 &1311230405
 GameObject:
   m_ObjectHideFlags: 0
@@ -3293,7 +3322,6 @@ GameObject:
   - component: {fileID: 1414356174}
   - component: {fileID: 1414356176}
   - component: {fileID: 1414356175}
-  - component: {fileID: 1414356177}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -3373,37 +3401,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414356173}
   m_CullTransparentMesh: 1
---- !u!114 &1414356177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414356173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4919dfa2a9c4bde4b8cbace54b60a84c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  digitButtons:
-  - {fileID: 143153678}
-  - {fileID: 388082007}
-  - {fileID: 582940409}
-  - {fileID: 1162579604}
-  - {fileID: 1401522169}
-  - {fileID: 2531737}
-  - {fileID: 2080600625}
-  - {fileID: 1739472718}
-  - {fileID: 984431151}
-  - {fileID: 2142268718}
-  submitButton: {fileID: 1405689840}
-  clearButton: {fileID: 834509947}
-  messageText: {fileID: 479930486}
-  correctColor: {r: 0, g: 1, b: 0, a: 1}
-  incorrectColor: {r: 1, g: 0, b: 0, a: 1}
-  grayColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  puerta_anim: {fileID: 385232798}
-  panel: {fileID: 1414356173}
 --- !u!1001 &1438405402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3619,6 +3616,75 @@ MonoBehaviour:
   doorConversation: {fileID: 634106655}
   lampConversation: {fileID: 1852956159}
   dialogueMark: {fileID: 44980378}
+  doorLockCode: {fileID: 1685896223}
+--- !u!1 &1685896221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1685896222}
+  - component: {fileID: 1685896223}
+  m_Layer: 5
+  m_Name: DoorLockController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1685896222
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685896221}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0000104904175}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 267138224}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000248909, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1685896223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685896221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4919dfa2a9c4bde4b8cbace54b60a84c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  digitButtons:
+  - {fileID: 143153678}
+  - {fileID: 388082007}
+  - {fileID: 582940409}
+  - {fileID: 1162579604}
+  - {fileID: 1401522169}
+  - {fileID: 2531737}
+  - {fileID: 2080600625}
+  - {fileID: 1739472718}
+  - {fileID: 984431151}
+  - {fileID: 2142268718}
+  submitButton: {fileID: 1405689840}
+  clearButton: {fileID: 834509947}
+  messageText: {fileID: 479930486}
+  correctColor: {r: 0, g: 1, b: 0, a: 1}
+  incorrectColor: {r: 1, g: 0, b: 0, a: 1}
+  grayColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  isCodeCorrect: 0
+  puerta_anim: {fileID: 385232798}
+  panel: {fileID: 1414356173}
 --- !u!224 &1734834934 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3900108755196472087, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
@@ -3857,17 +3923,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentIDCounter: 28
-  json: "{\"Options\":[],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[],\"EditorInfo\":{\"isRoot\":true,\"xPos\":166.6,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Parece
+  CurrentIDCounter: 29
+  json: "{\"Options\":[{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":69,\"yPos\":257.2},\"ID\":28,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"End\",\"parentUIDs\":[0],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":28}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":62,\"yPos\":146},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Parece
     que no enciende. \xBFTendr\xE1 la bombilla fundida?\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Luke\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 0}
+  DefaultFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
   NodeSerializedDataList:
   - {fileID: 1855929455}
-  ContinueFont: {fileID: 0}
-  EndConversationFont: {fileID: 0}
+  - {fileID: 1855929459}
+  ContinueFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
+  EndConversationFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
   Event:
     m_PersistentCalls:
       m_Calls: []
@@ -3899,6 +3966,7 @@ GameObject:
   - component: {fileID: 1855929457}
   - component: {fileID: 1855929456}
   - component: {fileID: 1855929455}
+  - component: {fileID: 1855929459}
   m_Layer: 0
   m_Name: ConversationEventInfo
   m_TagString: Untagged
@@ -3920,22 +3988,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1124552925}
-        m_TargetAssemblyTypeName: DialoguesVacio, Assembly-CSharp
-        m_MethodName: EndConversation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   NodeID: 0
-  TMPFont: {fileID: 0}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
+  Icon: {fileID: 21300000, guid: e4104c54f7ad61341aa91109b8b4349c, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1855929456
 MonoBehaviour:
@@ -3990,6 +4046,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1852956160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1855929459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855929454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1124552925}
+        m_TargetAssemblyTypeName: DialoguesVacio, Assembly-CSharp
+        m_MethodName: EndConversation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  NodeID: 28
+  TMPFont: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
 --- !u!64 &1925998598
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4079,6 +4166,9 @@ GameObject:
   - component: {fileID: 1982907211}
   - component: {fileID: 1982907215}
   - component: {fileID: 1982907216}
+  - component: {fileID: 1982907220}
+  - component: {fileID: 1982907218}
+  - component: {fileID: 1982907221}
   m_Layer: 0
   m_Name: ConversationEventInfo
   m_TagString: Untagged
@@ -4102,8 +4192,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 0
-  TMPFont: {fileID: 0}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
+  Icon: {fileID: 21300000, guid: e4104c54f7ad61341aa91109b8b4349c, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1982907212
 MonoBehaviour:
@@ -4173,9 +4263,9 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 742299100}
-        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: CambiarEscena
+      - m_Target: {fileID: 1124552925}
+        m_TargetAssemblyTypeName: DialoguesVacio, Assembly-CSharp
+        m_MethodName: StartConversation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4186,7 +4276,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   NodeID: 36
-  TMPFont: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1982907216
@@ -4203,9 +4293,102 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Event:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1124552925}
+        m_TargetAssemblyTypeName: DialoguesVacio, Assembly-CSharp
+        m_MethodName: EndConversation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   NodeID: 37
-  TMPFont: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &1982907218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982907210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1124552925}
+        m_TargetAssemblyTypeName: DialoguesVacio, Assembly-CSharp
+        m_MethodName: EndConversation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  NodeID: 45
+  TMPFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &1982907220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982907210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 42
+  TMPFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
+  Icon: {fileID: 21300000, guid: e4104c54f7ad61341aa91109b8b4349c, type: 3}
+  Audio: {fileID: 0}
+--- !u!114 &1982907221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982907210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 742299100}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: CambiarEscena
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  NodeID: 48
+  TMPFont: {fileID: 11400000, guid: 59cfc11253d942b4babc08c3ebdd840b, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!1 &2080600624
@@ -9019,6 +9202,7 @@ MonoBehaviour:
   doorConversation: {fileID: 634106655}
   lampConversation: {fileID: 1852956159}
   dialogueMark: {fileID: 44980378}
+  doorLockCode: {fileID: 1685896223}
 --- !u!33 &7651678359815895155
 MeshFilter:
   m_ObjectHideFlags: 0

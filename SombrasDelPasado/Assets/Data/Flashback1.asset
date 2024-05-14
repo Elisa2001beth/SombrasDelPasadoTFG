@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c676597ba0ecd4788b80231dedede8, type: 3}
+  m_Name: Flashback1
+  m_EditorClassIdentifier: 
+  <IsStackable>k__BackingField: 0
+  <MaxStackSize>k__BackingField: 1
+  <Name>k__BackingField: Flashback
+  <Description>k__BackingField: Emily en el parque
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: c4cf0864a6d369246928045b2662d208, type: 3}
+  <DefaultParametersList>k__BackingField: []
+  <actionSFX>k__BackingField: {fileID: 0}
+  specificImage: {fileID: 21300000, guid: bb3b2858c638eb7479b2a3e5bce0fd9c, type: 3}
+  onInspect:
+    m_PersistentCalls:
+      m_Calls: []

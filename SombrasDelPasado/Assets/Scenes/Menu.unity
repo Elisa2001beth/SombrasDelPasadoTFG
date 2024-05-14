@@ -249,7 +249,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 98707941}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1710576930}
+        m_TargetAssemblyTypeName: SalirJuego, Assembly-CSharp
+        m_MethodName: Salir
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &98707941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1430,6 +1442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1710576928}
   - component: {fileID: 1710576929}
+  - component: {fileID: 1710576930}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -1468,6 +1481,18 @@ MonoBehaviour:
   resolutionDropdown: {fileID: 1242297410}
   qualityDropdown: {fileID: 155236433}
   volumeSlider: {fileID: 1541825447}
+--- !u!114 &1710576930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710576926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af03f0745a33f3f4ba0a4f99e67d153b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1796911750
 GameObject:
   m_ObjectHideFlags: 0

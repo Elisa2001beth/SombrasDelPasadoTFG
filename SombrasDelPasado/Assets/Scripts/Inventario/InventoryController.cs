@@ -14,6 +14,11 @@ namespace Inventory
     public class InventoryController : MonoBehaviour
     {
         [SerializeField]
+        private Image itemFlashback; // Agrega una referencia al componente Image que mostrará la imagen del ítem en el panel de inspección
+
+
+
+        [SerializeField]
         private UIInventoryPage inventoryUI;
 
         [SerializeField]
@@ -173,6 +178,7 @@ namespace Inventory
             {
                 inventoryUI.Hide(); // Ocultar el panel de inventario
                 inspectPanel.SetActive(true); // Activar el panel de inspección
+                itemFlashback.sprite = item.specificImage;
             }
         }
 

@@ -14,6 +14,9 @@ namespace Inventory.Model
         [field: SerializeField]
         public AudioClip actionSFX { get; private set; }
 
+        public Sprite specificImage; // Campo para la imagen específica del ítem
+
+
         public UnityEvent<InspectableItemSO> onInspect = new UnityEvent<InspectableItemSO>(); // Evento para inspeccionar el objeto
 
         public bool PerformAction(GameObject character, List<ItemParameter> itemState = null)

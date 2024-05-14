@@ -12,6 +12,7 @@ TagManager:
   - Door
   - Lamp
   - DoorOpen
+  - Portal
   layers:
   - Default
   - TransparentFX

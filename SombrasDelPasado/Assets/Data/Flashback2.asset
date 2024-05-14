@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55c676597ba0ecd4788b80231dedede8, type: 3}
-  m_Name: Photo
+  m_Name: Flashback2
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
   <Name>k__BackingField: Flashback
-  <Description>k__BackingField: Emily en el parque
-  <ItemImage>k__BackingField: {fileID: 21300000, guid: c4cf0864a6d369246928045b2662d208, type: 3}
+  <Description>k__BackingField: Bullying escolar
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: fb2fd7574bb741741b46bd79c74a262c, type: 3}
   <DefaultParametersList>k__BackingField: []
   <actionSFX>k__BackingField: {fileID: 0}
+  specificImage: {fileID: 21300000, guid: fb2fd7574bb741741b46bd79c74a262c, type: 3}
   onInspect:
     m_PersistentCalls:
       m_Calls: []

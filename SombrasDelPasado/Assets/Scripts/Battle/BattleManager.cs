@@ -137,7 +137,7 @@ public class BattleManager : MonoBehaviour
 
     }
 
-    //nuevo hasta aqui
+    
 
     public void CheckEnemyDeads()
     {

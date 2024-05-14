@@ -17,8 +17,8 @@ public class DoorLockCode : MonoBehaviour
     private int[] enteredCode = new int[3]; // Código ingresado por el usuario
     private int currentIndex = 0; // Índice actual del código ingresado
 
-    
 
+    public bool isCodeCorrect = false; // Variable pública para verificar si el código es correcto
 
 
     [SerializeField] Animator puerta_anim;
@@ -85,13 +85,17 @@ public class DoorLockCode : MonoBehaviour
 
         if (isCorrect)
         {
-            //messageText.text = "Código correcto. ¡Puerta abierta!";
+            
             messageText.color = correctColor; // Cambiar color del texto a verde
-            // Aquí puedes añadir la lógica para abrir la puerta
+    
             OpenDoor();
+            isCodeCorrect = true; //nuevo
+
+
         }
         else
         {
+            isCodeCorrect = false; //nuevo
             //messageText.text = "Código incorrecto. Inténtalo de nuevo.";
             messageText.color = incorrectColor; // Cambiar color del texto a rojo
             Invoke("ResetCode", 1f); // Reiniciar el código después de 1 segundo
@@ -123,8 +127,6 @@ public class DoorLockCode : MonoBehaviour
 
     private void OpenDoor()
     {
-
-
 
         //panel.SetActive(false);
         Invoke("DesactivarPanel", 1f);
