@@ -9,7 +9,7 @@ using DialogueEditor;
 public class DialogueAnimatedCar : MonoBehaviour
 {
 
-    public float initialDelay = 2f;  // Tiempo de espera inicial
+    public float initialDelay = 1f;  // Tiempo de espera inicial
     public NPCConversation _conversation; // Referencia al gestor de diálogo
  
     public AudioClip startSound;  // Audio al inicio
@@ -59,13 +59,10 @@ public class DialogueAnimatedCar : MonoBehaviour
             audioSource.clip = endSound;
             audioSource.Play();
 
-            Invoke("ChangeScene", endSound.length + 1f);  // Cambio de escena después de que termine el sonido final
+            
         }
     }
 
-    void ChangeScene()
-    {
-        SceneManager.LoadScene(nextSceneName);
-    }
+    
 }
 
