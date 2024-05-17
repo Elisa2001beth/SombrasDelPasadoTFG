@@ -21,7 +21,7 @@ public class DialogueCity: MonoBehaviour
         ConversationManager.Instance.StartConversation(_conversation); // Método para iniciar los diálogos
     }
 
-    public void EndConversatio()
+    public void EndConversation()
     {
         playerController.PermitirMovimiento(true);
     }
