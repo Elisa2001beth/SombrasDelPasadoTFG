@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,29 +6,111 @@ using DialogueEditor;
 
 public class DialogueFantasy : MonoBehaviour
 {
-    public NPCConversation _conversation; // Referencia al gestor de diálogo
-    public float delayBeforeDialogue = 2.0f; // Retraso antes de iniciar los diálogos
+    public NPCConversation startConversation;
+    public NPCConversation portalConversation;
+    
+    private bool isPlayerInRange;
+    private bool didDialogueStart;
+
+    [SerializeField] private GameObject dialogueMark;
+
     private PlayerController playerController;
+
+   
+
 
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
-        StartConversation(); // Inicia la conversación al comienzo de la escena
+
+        // Suscribir al evento de finalización de conversación
+        ConversationManager.OnConversationEnded += EndConversation;
+        StartInitialConversation();
+
+
+    }
+
+    void Update()
+    {
+
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
+        {
+            if (!didDialogueStart)
+            {
+                StartDialogue();
+            }
+        }
+    }
+
+    private void StartInitialConversation()
+    {
+        Invoke("StartInitialConversationWithDelay", 0.25f);
     }
 
     private void StartInitialConversationWithDelay()
     {
-        playerController.PermitirMovimiento(false); // Deshabilita el movimiento del jugador
-        ConversationManager.Instance.StartConversation(_conversation);
+        playerController.PermitirMovimiento(false);
+        ConversationManager.Instance.StartConversation(startConversation);
     }
 
-    void StartConversation()
+    private void StartDialogue()
     {
-        Invoke("StartInitialConversationWithDelay", delayBeforeDialogue);
+        didDialogueStart = true;
+        dialogueMark.SetActive(false);
+        Invoke("StartConversationWithDelay", 0.15f);
     }
 
-    public void EndConversationWithDelay()
+    private void StartConversationWithDelay()
     {
-        playerController.PermitirMovimiento(true); // Habilita el movimiento del jugador al finalizar el diálogo
+        playerController.PermitirMovimiento(false);
+        StartConversation();
     }
+
+    public void StartConversation()
+    {
+
+
+        string tag = gameObject.tag;
+        if (tag == "Portal")
+        {
+            ConversationManager.Instance.StartConversation(portalConversation);
+        }
+    }
+
+    public void EndConversation()
+    {
+        playerController.PermitirMovimiento(true); // Permitir que el jugador se mueva nuevamente
+        didDialogueStart = false; // Restablecer la variable para permitir que se inicie el diálogo nuevamente
+        if (isPlayerInRange) // Mostrar la marca de diálogo solo si el jugador sigue en rango
+        {
+            dialogueMark.SetActive(true);
+        }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            isPlayerInRange = true;
+            dialogueMark.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            dialogueMark.SetActive(false);
+            isPlayerInRange = false;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // Desuscribir del evento cuando el objeto se destruya
+        ConversationManager.OnConversationEnded -= EndConversation;
+    }
+
+
+
 }

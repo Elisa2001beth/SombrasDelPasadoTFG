@@ -128,8 +128,7 @@ public class P_BattleController : MonoBehaviour
 
     private void ActionCommonLogic(int minDamage, int maxDamage, string animTrigger)
     {
-        //EnemyDamage();//esto no debe ir asi debe hacerse una accion en la animacion. minuto 9:36 video 08-Activacion animacion script/Batalla turnos unity
-
+        
         int damage = UnityEngine.Random.Range(minDamage, maxDamage);
         UpdateBars();
         ShowDamageText(damage);
@@ -149,7 +148,6 @@ public class P_BattleController : MonoBehaviour
     public bool PlayerEndTurn(){
         if(playerEndTurn){
             markerSelect.SetActive(false);
-            //NUEVO
             action1.SetActive(false);
             action2.SetActive(false);
             action3.SetActive(false);
@@ -186,6 +184,7 @@ public class P_BattleController : MonoBehaviour
     public void EnemyDamage()
     {
         _sbm.enemyTarget.enemyAnim.SetTrigger("Damage");
+
     }
 
 

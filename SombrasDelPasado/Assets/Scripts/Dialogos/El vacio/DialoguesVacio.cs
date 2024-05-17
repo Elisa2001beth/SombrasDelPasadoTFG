@@ -44,7 +44,7 @@ public class DialoguesVacio : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(doorLockCode.isCodeCorrect);
+        
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
             if (!didDialogueStart)

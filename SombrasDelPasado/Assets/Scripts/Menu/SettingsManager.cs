@@ -136,7 +136,7 @@ public class SettingsManager : MonoBehaviour
 
         if (indiceResolucion < 0 || indiceResolucion >= resolutions.Length)
         {
-            Debug.LogError("Índice de resolución fuera de rango.");
+            
             return;
         }
 
