@@ -71,7 +71,12 @@ public class PlayerController : MonoBehaviour
     public void PermitirMovimiento(bool permitir)
     {
         puedeMoverse = permitir;
-        
+        if (!puedeMoverse)
+        {
+            _animator.SetFloat("Speed", 0);
+            _animator.SetBool("IsMoving", false);
+        }
+
     }
 }
 
