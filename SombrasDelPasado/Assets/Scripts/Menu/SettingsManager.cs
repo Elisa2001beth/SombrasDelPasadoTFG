@@ -18,7 +18,7 @@ public class SettingsManager : MonoBehaviour
     void Start()
     {
         // Aplicar DontDestroyOnLoad
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject); //AQUIII
 
         // Verificar si los objetos están asignados
         if (toggleFullScreen == null || resolutionDropdown == null || qualityDropdown == null || volumeSlider == null)
