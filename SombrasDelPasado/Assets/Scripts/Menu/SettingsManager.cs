@@ -18,7 +18,7 @@ public class SettingsManager : MonoBehaviour
     void Start()
     {
         // Aplicar DontDestroyOnLoad
-        //DontDestroyOnLoad(this.gameObject); //AQUIII
+        //DontDestroyOnLoad(this.gameObject); //
 
         // Verificar si los objetos están asignados
         if (toggleFullScreen == null || resolutionDropdown == null || qualityDropdown == null || volumeSlider == null)
@@ -61,7 +61,7 @@ public class SettingsManager : MonoBehaviour
         // Verificar si los objetos están asignados
         if (toggleFullScreen == null || resolutionDropdown == null || qualityDropdown == null || volumeSlider == null)
         {
-            
+
             return;
         }
 
@@ -136,7 +136,7 @@ public class SettingsManager : MonoBehaviour
 
         if (indiceResolucion < 0 || indiceResolucion >= resolutions.Length)
         {
-            
+
             return;
         }
 
