@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/VideoIntro.unity
+    guid: b9d341dd9e8d5a04d8305eba57cf115a
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: edd645b57a6fd654d8fcecd68da013e3
   - enabled: 1
@@ -26,7 +29,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ciudad.unity
     guid: 373f8d19dafbe0d4fa27c0a7d62b34b0
-  - enabled: 0
-    path: Assets/Scenes/Combate/PruebaCombate.unity
-    guid: f4ebbf1c526f2784fa3a74a343b885a4
+  - enabled: 1
+    path: Assets/Scenes/El Vacio 2.unity
+    guid: 4fb2b5d6024d07d4cbe6c5e869565775
+  - enabled: 1
+    path: Assets/Scenes/Texto_final.unity
+    guid: 0e97f7df2655ac34a88e65bfe38e886c
+  - enabled: 1
+    path: Assets/Scenes/VideoFinal.unity
+    guid: bc4ec6680fecc87428800885e0775866
   m_configObjects: {}

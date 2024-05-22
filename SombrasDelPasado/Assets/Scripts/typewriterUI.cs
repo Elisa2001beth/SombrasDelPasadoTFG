@@ -1,8 +1,3 @@
-// Script for having a typewriter effect for UI
-// Prepared by Nick Hwang (https://www.youtube.com/nickhwang)
-// Want to get creative? Try a Unicode leading character(https://unicode-table.com/en/blocks/block-elements/)
-// Copy Paste from page into Inpector
-
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +7,7 @@ using TMPro;
 public class TypewriterUI : MonoBehaviour
 {
     [SerializeField] float delayBeforeStart = 0f;
+    [SerializeField] float delayBeforeEnd = 2f; // Tiempo de espera antes de cambiar de escena
     [SerializeField] float timeBtwChars = 0.1f;
     [SerializeField] string leadingChar = "";
     [SerializeField] bool leadingCharBeforeDelay = false;
@@ -70,7 +66,8 @@ public class TypewriterUI : MonoBehaviour
             }
         }
 
-        // Cambiar de escena después de mostrar todas las frases
+        yield return new WaitForSeconds(delayBeforeEnd);
+        // Cambiar de escena después de mostrar todas las frases y esperar el tiempo señalado
         SceneManager.LoadScene(nextSceneName);
     }
 
@@ -105,7 +102,8 @@ public class TypewriterUI : MonoBehaviour
             }
         }
 
-        // Cambiar de escena después de mostrar todas las frases
+        yield return new WaitForSeconds(delayBeforeEnd);
+        // Cambiar de escena después de mostrar todas las frases y esperar el tiempo señalado
         SceneManager.LoadScene(nextSceneName);
     }
 }

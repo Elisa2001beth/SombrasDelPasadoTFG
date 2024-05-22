@@ -63,12 +63,15 @@ public class PlayerController : MonoBehaviour
 
         bool isMoving = moveSpeed > 0.1f;
         _animator.SetBool("IsMoving", isMoving);
+
+
     }
 
     // Método público para permitir o restringir el movimiento del jugador
     public void PermitirMovimiento(bool permitir)
     {
         puedeMoverse = permitir;
+        
     }
 }
 

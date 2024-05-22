@@ -630,6 +630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeStart: 0.7
+  delayBeforeEnd: 3
   timeBtwChars: 0.1
   leadingChar: '|'
   leadingCharBeforeDelay: 0
