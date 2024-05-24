@@ -608,7 +608,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4b256574b7420214cac57520757f3622, type: 3}
   imageTexts:
   - "Ian estaba sentado en el sof\xE1, con el m\xF3vil en la mano y una mirada pensativa
-    dirigida hacia la ventana. La luz suave del atardecer reflejaba su estado preocupado."
+    hacia la ventana. La luz del atardecer reflejaba su estado preocupado."
   - "En Navidad, Luke disfrutaba de una taza de chocolate caliente y unas galletas,
     sentado junto al \xE1rbol decorado, inmerso en el esp\xEDritu festivo."
   - "Emily, distra\xEDda, esperaba fuera mientras Luke e Ian terminaban de comprar,
@@ -858,47 +858,47 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1501583516}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a5184882a95306647b30af0f6cc4a899, type: 3}
       propertyPath: m_LocalScale.x
-      value: 9.622384
+      value: 6.7945123
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5184882a95306647b30af0f6cc4a899, type: 3}
       propertyPath: m_LocalScale.y
-      value: 9.622384
+      value: 6.794513
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5184882a95306647b30af0f6cc4a899, type: 3}
       propertyPath: m_LocalScale.z
-      value: 9.622384
+      value: 6.7945123
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5184882a95306647b30af0f6cc4a899, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -32.21
+      value: -13.07019
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5184882a95306647b30af0f6cc4a899, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.5
+      value: 5.931369
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5184882a95306647b30af0f6cc4a899, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.59
+      value: -37.78424
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5184882a95306647b30af0f6cc4a899, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5184882a95306647b30af0f6cc4a899, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5184882a95306647b30af0f6cc4a899, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5184882a95306647b30af0f6cc4a899, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a5184882a95306647b30af0f6cc4a899, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -921,6 +921,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5184882a95306647b30af0f6cc4a899, type: 3}
+--- !u!4 &242233341 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a5184882a95306647b30af0f6cc4a899, type: 3}
+  m_PrefabInstance: {fileID: 242233340}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &255452152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,9 +1680,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1189561740}
   - {fileID: 836608007}
   - {fileID: 984410953}
-  - {fileID: 1189561740}
   - {fileID: 1778987292}
   - {fileID: 1961620183}
   m_Father: {fileID: 0}
@@ -6211,8 +6216,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.4434, y: -1156.5}
-  m_SizeDelta: {x: 997.1677, y: 180.56}
+  m_AnchoredPosition: {x: -13.6748, y: -1156.5}
+  m_SizeDelta: {x: 1132.4385, y: 180.56}
   m_Pivot: {x: 0.5, y: -3.4143014}
 --- !u!114 &944231581
 MonoBehaviour:
@@ -10988,6 +10993,7 @@ Transform:
   - {fileID: 602749177}
   - {fileID: 482008741}
   - {fileID: 693484994}
+  - {fileID: 242233341}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1504602157 stripped
@@ -13096,8 +13102,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.1529, y: -436.87195}
-  m_SizeDelta: {x: 637.6572, y: 85.9387}
+  m_AnchoredPosition: {x: -1.5863, y: -436.87195}
+  m_SizeDelta: {x: 774.6563, y: 85.9387}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2116319222
 MonoBehaviour:
@@ -16044,6 +16050,5 @@ SceneRoots:
   - {fileID: 1021897335}
   - {fileID: 1221000968}
   - {fileID: 1408525054}
-  - {fileID: 242233340}
   - {fileID: 1978876285}
   - {fileID: 2073474435}

@@ -10,6 +10,7 @@ public class DialoguesVacio2 : MonoBehaviour
     public NPCConversation catConversation;
     public NPCConversation emilyConversation;
     public NPCConversation lampConversation;
+    public NPCConversation endConversation;
     private bool isPlayerInRange;
     private bool didDialogueStart;
 
@@ -27,7 +28,8 @@ public class DialoguesVacio2 : MonoBehaviour
         battleManager = FindObjectOfType<BattleManager>();
         // Suscribir al evento de finalización de conversación
         ConversationManager.OnConversationEnded += EndConversation;
-        
+        BattleManager.OnPlayerVictory += PlayerWonBattle;
+
         StartInitialConversation();
 
 
@@ -43,6 +45,24 @@ public class DialoguesVacio2 : MonoBehaviour
                 StartDialogue();
             }
         }
+    }
+
+    private void PlayerWonBattle()
+    {
+        // Iniciar la nueva conversación aquí
+        StartEndConversation();
+    }
+
+    private void StartEndConversation()
+    {
+        // Código para iniciar la nueva conversación después de que el jugador gane la batalla
+        Invoke("StartEndConversationWithDelay", 0.25f);
+    }
+
+    private void StartEndConversationWithDelay()
+    {
+        playerController.PermitirMovimiento(false);
+        ConversationManager.Instance.StartConversation(endConversation);
     }
 
     private void StartInitialConversation()

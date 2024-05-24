@@ -16,10 +16,10 @@ MonoBehaviour:
   <MaxStackSize>k__BackingField: 1
   <Name>k__BackingField: Flashback
   <Description>k__BackingField: Bullying escolar
-  <ItemImage>k__BackingField: {fileID: 21300000, guid: fb2fd7574bb741741b46bd79c74a262c, type: 3}
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: 4830f85bb52cd2e4e81a1bb71f244079, type: 3}
   <DefaultParametersList>k__BackingField: []
   <actionSFX>k__BackingField: {fileID: 0}
-  specificImage: {fileID: 21300000, guid: fb2fd7574bb741741b46bd79c74a262c, type: 3}
+  specificImage: {fileID: 21300000, guid: 766eb33f5b8256e4886c677b2f49e2e6, type: 3}
   onInspect:
     m_PersistentCalls:
       m_Calls: []

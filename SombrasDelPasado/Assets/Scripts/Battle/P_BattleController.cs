@@ -61,10 +61,11 @@ public class P_BattleController : MonoBehaviour
     private void OnMouseDown()
     {
 
-        if (playerEndTurn || currentHealthValue <= 0)
+        if (playerEndTurn || currentHealthValue <= 0 || _sbm.GetBattleState() == BattleState.ENEMY_TURN)
         {
             return;
         }
+
 
         if (_sbm.GetBattleState() == BattleState.PLAYER_TURN)
         {

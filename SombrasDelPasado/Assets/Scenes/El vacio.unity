@@ -741,11 +741,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1124552924}
   - {fileID: 2020874556}
-  - {fileID: 1424998815}
   - {fileID: 1685896222}
   - {fileID: 1414356174}
-  - {fileID: 1124552924}
+  - {fileID: 1424998815}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3168,12 +3168,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7139215eff725f40a58e1ed98e3153f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startConversation: {fileID: 0}
+  startConversation: {fileID: 97764581}
   catConversation: {fileID: 1054599006}
   doorConversation: {fileID: 634106655}
   lampConversation: {fileID: 1852956159}
   dialogueMark: {fileID: 44980378}
-  doorLockCode: {fileID: 0}
+  doorLockCode: {fileID: 1685896223}
 --- !u!114 &1080784034 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4057360352030647435, guid: afd1ba8a83b9f6041bfbd21bee8388f6, type: 3}
@@ -3245,7 +3245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7139215eff725f40a58e1ed98e3153f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startConversation: {fileID: 0}
+  startConversation: {fileID: 97764581}
   catConversation: {fileID: 1054599006}
   doorConversation: {fileID: 634106655}
   lampConversation: {fileID: 1852956159}
@@ -11521,11 +11521,11 @@ SceneRoots:
   m_Roots:
   - {fileID: 1157929032}
   - {fileID: 1311593808}
+  - {fileID: 397998702}
   - {fileID: 543450651712734986}
   - {fileID: 1491085130}
   - {fileID: 267138224}
   - {fileID: 296892302}
   - {fileID: 742299101}
   - {fileID: 769433183}
-  - {fileID: 397998702}
   - {fileID: 836083081}

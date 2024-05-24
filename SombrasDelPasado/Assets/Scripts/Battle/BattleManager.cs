@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public enum BattleState
 {
@@ -15,7 +16,9 @@ public class BattleManager : MonoBehaviour
 {
     private BattleState _bState = BattleState.PLAYER_TURN;
 
-    
+    public delegate void PlayerVictoryEvent();
+    public static event PlayerVictoryEvent OnPlayerVictory;
+
 
     public BattleState GetBattleState()
     {
@@ -54,12 +57,16 @@ public class BattleManager : MonoBehaviour
     public Image[] enemyManaBars;
     public Image[] enemyJugoBars;
 
-
+    public TMP_Text victoryText;
+    public TMP_Text defeatText;
     //nuevo
     public void Start()
     {
         panel.SetActive(false);
         playerController = FindObjectOfType<PlayerController>();
+
+        victoryText.gameObject.SetActive(false);
+        defeatText.gameObject.SetActive(false);
     }
     //nuevo hasta  aqui
 
@@ -229,12 +236,7 @@ public class BattleManager : MonoBehaviour
         return allPlayersDead;
     }
 
-  
-
-    private bool IsPlayerDead(P_BattleController player)
-    {
-        return player.GetCurrentHealthValue() <= 0;
-    }
+ 
 
     public void NextTurn()
     {
@@ -251,11 +253,29 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+
+    public void PlayEnemyDeathAnimation()
+    {
+        // Reproduce la animación de muerte del enemigo
+        foreach (E_BattleController enemy in enemies)
+        {
+            enemy.EnemyDead();
+        }
+    }
+
+    public void PlayPlayerDeathAnimation()
+    {
+        // Reproduce la animación de muerte del jugador
+        foreach (P_BattleController player in players)
+        {
+            player.PlayerDead();
+        }
+    }
+
     //nuevo
     public void EndGame()
     {
-        mainCamera.SetActive(true);
-        battleCamera.SetActive(false);
+        
         bool allPlayersDead = true;
         bool allEnemiesDead = true;
 
@@ -282,8 +302,11 @@ public class BattleManager : MonoBehaviour
 
         if (allPlayersDead)
         {
+            PlayPlayerDeathAnimation();
             Debug.Log("El jugador ha perdido");
-            
+
+            StartCoroutine(ShowDefeatMessage());
+
             ResetPlayerPosition();
             ResetBarsPlayer();
             ResetBarsEnemies();
@@ -306,8 +329,15 @@ public class BattleManager : MonoBehaviour
         }
         else if (allEnemiesDead)
         {
-            
+            if (OnPlayerVictory != null)
+            {
+                OnPlayerVictory();
+            }
+            PlayEnemyDeathAnimation();
             Debug.Log("El enemigo ha perdido");
+
+            StartCoroutine(ShowVictoryMessage());
+
             panel.SetActive(false);
             playerController.puedeMoverse = true;
             ActivateObjects();
@@ -315,6 +345,23 @@ public class BattleManager : MonoBehaviour
             
         }
 
+        mainCamera.SetActive(true);
+        battleCamera.SetActive(false);
+
+    }
+
+    private IEnumerator ShowVictoryMessage()
+    {
+        victoryText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        victoryText.gameObject.SetActive(false);
+    }
+
+    private IEnumerator ShowDefeatMessage()
+    {
+        defeatText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        defeatText.gameObject.SetActive(false);
     }
 
     //
