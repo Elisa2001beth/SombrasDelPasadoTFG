@@ -10,12 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55c676597ba0ecd4788b80231dedede8, type: 3}
-  m_Name: Flashback3
+  m_Name: Ciberacoso
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
-  <Name>k__BackingField: Flashback
-  <Description>k__BackingField: tercer flashback
+  <Name>k__BackingField: Ciberacoso
+  <Description>k__BackingField: "Sentada frente a mi ordenador, leo mensajes llenos
+    de odio. 'Nadie te quiere aqu\xED,' dice uno de los mensajes. Me siento atrapada,
+    atacada no solo en la vida real, sino tambi\xE9n en el mundo digital. '\xBFPor
+    qu\xE9 son tan crueles?' me pregunto mientras las l\xE1grimas fluyen. La pantalla
+    del ordenador es una ventana a un mundo lleno de odio del que no puedo escapar."
   <ItemImage>k__BackingField: {fileID: 21300000, guid: c8d52aa74f6924f49ba6d6f3b5b3d41a, type: 3}
   <DefaultParametersList>k__BackingField: []
   <actionSFX>k__BackingField: {fileID: 0}

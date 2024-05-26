@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55c676597ba0ecd4788b80231dedede8, type: 3}
-  m_Name: Flashback1
+  m_Name: Soledad en el parque
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
-  <Name>k__BackingField: Flashback
-  <Description>k__BackingField: Emily en el parque
+  <Name>k__BackingField: Soledad en el parque
+  <Description>k__BackingField: "Hoy me sent\xE9 sola en el parque, intentando encontrar
+    un poco de paz. Pero las l\xE1grimas no paraban de caer. Me sent\xEDa tan sola,
+    a pesar de estar rodeada de gente. Los \xE1rboles y las flores no pod\xEDan consolarme.
+    La tristeza y la soledad causada por el bullying me pesaban demasiado en el coraz\xF3n."
   <ItemImage>k__BackingField: {fileID: 21300000, guid: c4cf0864a6d369246928045b2662d208, type: 3}
   <DefaultParametersList>k__BackingField: []
   <actionSFX>k__BackingField: {fileID: 0}
