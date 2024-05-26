@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
+  m_AmbientSkyColor: {r: 0.9529412, g: 0.93773586, b: 0.93773586, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 38383f66956e6064b9901cfe30f25e58, type: 2}
   m_HaloStrength: 0.5
@@ -759,7 +759,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 6.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -14421,7 +14421,7 @@ Transform:
   m_GameObject: {fileID: 6335250783658920474}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.49999997, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -11.948724, y: 9.150566, z: -28.528315}
+  m_LocalPosition: {x: -11.948724, y: 9.359603, z: -28.528315}
   m_LocalScale: {x: 62.2002, y: 62.2002, z: 62.2002}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15823,7 +15823,7 @@ Transform:
   m_GameObject: {fileID: 2891746524478936005}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000015454313, y: 0.70710677, z: -0.000000015454312, w: 0.7071068}
-  m_LocalPosition: {x: -13.251475, y: 9.843964, z: -28.517649}
+  m_LocalPosition: {x: -13.251475, y: 10.053, z: -28.517649}
   m_LocalScale: {x: 15.894517, y: 15.894517, z: 15.894517}
   m_ConstrainProportionsScale: 0
   m_Children: []
