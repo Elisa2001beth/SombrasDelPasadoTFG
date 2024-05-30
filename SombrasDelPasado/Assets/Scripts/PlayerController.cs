@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (puedeMoverse) // Cambiado a la variable privada
+        if (puedeMoverse) 
         {
             GatherInput();
             Look();
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (puedeMoverse) // Cambiado a la variable privada
+        if (puedeMoverse) 
         {
             Move();
         }

@@ -21,7 +21,7 @@ public class E_BattleController : MonoBehaviour
     public Animator enemyAnim;
 
 
-    //nuevo
+    
     public Image healthBar;
     public Image manaBar;
     public Image jugoBar;
@@ -35,12 +35,12 @@ public class E_BattleController : MonoBehaviour
     public TMP_Text damageText;
 
     List<P_BattleController> alivePlayers = new List<P_BattleController>();
-    //nuevo
+    
     void Start()
     {
         playerHealthBar = _sbm.playersHealthBars;
     }
-    //
+    
 
     private void Awake(){
         _sbm = FindObjectOfType<BattleManager>();
@@ -171,7 +171,7 @@ public class E_BattleController : MonoBehaviour
             
             playerTarget.PlayerDamage(damage);
             playerTarget.UpdateBars();
-            //UpdateBars();
+            
             PlayerDamageRecive(damage);
             ShowDamageText(damage);
         }
@@ -181,7 +181,7 @@ public class E_BattleController : MonoBehaviour
     }
 
 
-    //nuevo
+    
     public void UpdateBars()
     {
         healthBar.fillAmount = currentHealthValue / 250f;
@@ -189,12 +189,10 @@ public class E_BattleController : MonoBehaviour
         jugoBar.fillAmount = currentJugoValue / 120f;
         Debug.Log("enemigo" + currentHealthValue);
     }
-    //
+    
 
     public void PlayerDamageRecive(int damage){
-        //playerTarget.GetComponent<P_BattleController>().playerAnim.SetTrigger("Damage");
         
-        //currentHealthValue -= damage;
         if (currentHealthValue <= 0)
         {
             // El jugador ha muerto, por lo que lo eliminamos de la lista de jugadores vivos
@@ -202,7 +200,7 @@ public class E_BattleController : MonoBehaviour
             
         }
 
-        //_playerController.PlayerDamage(damage);
+        
 
     }
 
@@ -217,7 +215,7 @@ public class E_BattleController : MonoBehaviour
         UpdateBars();
         if (currentHealthValue <= 0)
         {
-            //enemyAnim.SetTrigger(DIE); // Activar la animación de "Dead" si la vida llega a cero
+            
             EnemyDead();
         }
     }

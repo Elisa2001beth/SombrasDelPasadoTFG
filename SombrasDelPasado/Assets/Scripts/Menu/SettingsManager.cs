@@ -17,13 +17,11 @@ public class SettingsManager : MonoBehaviour
 
     void Start()
     {
-        // Aplicar DontDestroyOnLoad
-        //DontDestroyOnLoad(this.gameObject); //
+       
 
         // Verificar si los objetos están asignados
         if (toggleFullScreen == null || resolutionDropdown == null || qualityDropdown == null || volumeSlider == null)
         {
-            //Debug.LogError("Uno o más objetos de la UI no están asignados en el Inspector de Unity.");
             return;
         }
 
@@ -72,7 +70,7 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetFloat("Volumen", volumeSlider.value);
 
         PlayerPrefs.Save();
-        //Debug.Log("Configuraciones Guardadas");
+        
     }
 
     public void CargarConfiguraciones()

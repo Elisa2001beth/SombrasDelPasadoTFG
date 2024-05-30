@@ -27,7 +27,7 @@ public class P_BattleController : MonoBehaviour
 
     public Animator playerAnim;
 
-    //nuevo
+    
     public Image healthBar;
     public Image manaBar;
     public Image jugoBar;
@@ -38,7 +38,7 @@ public class P_BattleController : MonoBehaviour
 
     private Image[] enemyHealthBar;
 
-    //nuevo
+   
     private E_BattleController _enemyController;
 
 
@@ -86,7 +86,7 @@ public class P_BattleController : MonoBehaviour
 
     public void PlayerDeSelect(){
         markerSelect.SetActive(false);
-        //NUEVO
+        
         action1.SetActive(false);
         action2.SetActive(false);
         action3.SetActive(false);
@@ -95,7 +95,7 @@ public class P_BattleController : MonoBehaviour
         _sbm.enemyTarget.EnemyDeSelect();
     }
 
-    //nuevo
+    
 
     public void ActionButton1() {
         ActionCommonLogic(5, 20, "Atk1");
@@ -177,8 +177,7 @@ public class P_BattleController : MonoBehaviour
 
 
     public void EnemyDamageRecive(int damage){
-        //_sbm.enemyTarget.enemyAnim.SetTrigger("Damage");
-        //_enemyController.currentHealthValue -= damage;// esto tiene que ser del enemigo y esta cogiendo la del player
+        
         _enemyController.EnemyDamage(damage);
     }
 
@@ -190,15 +189,15 @@ public class P_BattleController : MonoBehaviour
 
 
 
-    //nuevo
+    
     public void UpdateBars()
     {
         healthBar.fillAmount = currentHealthValue / 200f;
         manaBar.fillAmount = currentManaValue / 100f;
         jugoBar.fillAmount = currentJugoValue / 80f;
-        Debug.Log("jugador" + currentHealthValue);
+        
     }
-    //
+    
 
     void ShowDamageText(int damage)
     {

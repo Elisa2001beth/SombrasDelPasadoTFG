@@ -25,7 +25,7 @@ public class BattleManager : MonoBehaviour
         return _bState;
     }
 
-    public GameObject panel;//nuevo
+    public GameObject panel;
     public GameObject lukePlayer;
     public GameObject emilyPlayer;
     public Transform teleportTargetLuke;
@@ -48,7 +48,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     private float _delayBtwnEnemies = 3f;
 
-    //nuevo
+    
     public Image[] playersHealthBars;
     public Image[] playerManaBars;
     public Image[] playerJugoBars;
@@ -59,7 +59,7 @@ public class BattleManager : MonoBehaviour
 
     public TMP_Text victoryText;
     public TMP_Text defeatText;
-    //nuevo
+    
     public void Start()
     {
         panel.SetActive(false);
@@ -68,7 +68,7 @@ public class BattleManager : MonoBehaviour
         victoryText.gameObject.SetActive(false);
         defeatText.gameObject.SetActive(false);
     }
-    //nuevo hasta  aqui
+    
 
     public void StartBattle()
     {
@@ -272,7 +272,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    //nuevo
+    
     public void EndGame()
     {
         
@@ -334,7 +334,7 @@ public class BattleManager : MonoBehaviour
                 OnPlayerVictory();
             }
             PlayEnemyDeathAnimation();
-            Debug.Log("El enemigo ha perdido");
+            
 
             StartCoroutine(ShowVictoryMessage());
 
@@ -364,7 +364,7 @@ public class BattleManager : MonoBehaviour
         defeatText.gameObject.SetActive(false);
     }
 
-    //
+    
 
     public void PlayerSelect(P_BattleController PlayerSelect)
     {

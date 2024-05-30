@@ -18,7 +18,6 @@ public class Portal : MonoBehaviour
         playerController = FindObjectOfType<PlayerController>();
         ConversationManager.OnConversationEnded += EndConversation;
 
-        //StartInitialConversation();
     }
 
     void Update()

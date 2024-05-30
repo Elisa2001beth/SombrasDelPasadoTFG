@@ -17,7 +17,6 @@ public class DialogueParkAlbum : MonoBehaviour
 
     public void OnTriggerEnterPlayerCollider()
     {
-        Debug.Log("Colisión con el jugador detectada. Iniciando conversación en " + delayBeforeDialogue + " segundos.");
         Invoke("StartDialogue", delayBeforeDialogue); // Esperar antes de iniciar la conversación
     }
 
@@ -31,7 +30,6 @@ public class DialogueParkAlbum : MonoBehaviour
     public void EndFirstConversation()
     {
         playerController.PermitirMovimiento(true); // Permitir que el jugador se mueva nuevamente
-        // Aquí puedes iniciar la segunda conversación si es necesario
         StartSecondConversation();
     }
 

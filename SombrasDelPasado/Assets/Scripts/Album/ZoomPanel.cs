@@ -14,12 +14,12 @@ public class ZoomPanel : MonoBehaviour
 
     public void ZoomForward()
     {
-        // Aquí puedes implementar la lógica para avanzar a la siguiente imagen
+        
     }
 
     public void ZoomBack()
     {
-        // Aquí puedes implementar la lógica para retroceder a la imagen anterior
+        
     }
 
     public void ClosePanel()

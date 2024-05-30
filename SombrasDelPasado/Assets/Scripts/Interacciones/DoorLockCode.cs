@@ -96,7 +96,6 @@ public class DoorLockCode : MonoBehaviour
         else
         {
             isCodeCorrect = false; //nuevo
-            //messageText.text = "Código incorrecto. Inténtalo de nuevo.";
             messageText.color = incorrectColor; // Cambiar color del texto a rojo
             Invoke("ResetCode", 1f); // Reiniciar el código después de 1 segundo
         }
@@ -128,7 +127,7 @@ public class DoorLockCode : MonoBehaviour
     private void OpenDoor()
     {
 
-        //panel.SetActive(false);
+        
         Invoke("DesactivarPanel", 1f);
         Invoke("AbrirPuerta", 2f);
         Invoke("EliminarPanel",3f);

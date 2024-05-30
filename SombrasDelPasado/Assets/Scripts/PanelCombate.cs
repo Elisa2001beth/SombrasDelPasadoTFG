@@ -30,8 +30,6 @@ public class PanelCombate : MonoBehaviour
 
         // Restringir movimientos del jugador
         playerController.puedeMoverse = false;
-
-        // Aquí podrías inicializar el combate, establecer los turnos, etc.
     }
 
     public void FinalizarCombate()

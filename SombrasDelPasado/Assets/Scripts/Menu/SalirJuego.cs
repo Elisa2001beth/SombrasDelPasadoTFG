@@ -9,7 +9,7 @@ public class SalirJuego : MonoBehaviour
     {
         FindObjectOfType<SettingsManager>().GuardarConfiguraciones(); // Guardar las configuraciones
         Application.Quit();
-        Debug.Log("saliendo del juego");
+        
     }
 
 
